@@ -18,8 +18,10 @@ helm repo index --url https://mcsps.github.io/helm-charts/ .
 Content:
 --------
 
-* [openstack-service-loadbalancer](charts/openstack-service-loadbalancer) [src](https://github.com/mcsps/helm-charts/tree/master/charts/openstack-service-loadbalancer)
-* [cinder-csi-snapshot-crds](charts/cinder-csi-snapshot-crds) [src](https://github.com/mcsps/helm-charts/tree/master/charts/cinder-csi-snapshot-crds)
+* [openstack-service-loadbalancer](charts/openstack-service-loadbalancer) -
+  [(src)](https://github.com/mcsps/helm-charts/tree/master/charts/openstack-service-loadbalancer)
+* [cinder-csi-snapshot-crds](charts/cinder-csi-snapshot-crds) - 
+  [(src)](https://github.com/mcsps/helm-charts/tree/master/charts/cinder-csi-snapshot-crds)
 
 
 Credits:
