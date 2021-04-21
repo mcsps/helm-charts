@@ -22,6 +22,7 @@ Content:
 --------
 
 * [openstack-service-loadbalancer](charts/openstack-service-loadbalancer)
+* [cinder-csi-snapshot-crds](charts/cinder-csi-snapshot-crds)
 
 
 Credits:

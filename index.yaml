@@ -1,9 +1,24 @@
 apiVersion: v1
 entries:
+  cinder-csi-snapshot-crds:
+  - apiVersion: v1
+    appVersion: latest
+    created: "2021-04-21T09:13:40.093347892+02:00"
+    description: CRDs for Cinder CSI Chart Snapshot Controller
+    digest: 3274cb298cda5f6edba73bb99511b6b4f5a645f2c1314e69c75d23396ef57aeb
+    home: https://github.com/kubernetes-csi/external-snapshotter/tree/master/client/config/crd
+    icon: https://github.com/kubernetes/kubernetes/blob/master/logo/logo.png
+    maintainers:
+    - email: f.kloeker@telekom.de
+      name: eumel8
+    name: cinder-csi-snapshot-crds
+    urls:
+    - https://mcsps.github.io/helm-charts/cinder-csi-snapshot-crds-1.0.0.tgz
+    version: 1.0.0
   openstack-service-loadbalancer:
   - apiVersion: v1
     appVersion: latest
-    created: "2021-04-07T22:44:48.092502882+02:00"
+    created: "2021-04-21T09:13:40.093763851+02:00"
     description: Openstack Service Loadbalancer Helm Chart
     digest: 1c2c80d8943ae78dfd2fcba046994718bc226e8eb820677c4350e21bb6c442a9
     home: https://github.com/kubernetes/cloud-provider-openstack
@@ -16,4 +31,4 @@ entries:
     urls:
     - https://mcsps.github.io/helm-charts/openstack-service-loadbalancer-1.0.0.tgz
     version: 1.0.0
-generated: "2021-04-07T22:44:48.092045402+02:00"
+generated: "2021-04-21T09:13:40.092365096+02:00"
