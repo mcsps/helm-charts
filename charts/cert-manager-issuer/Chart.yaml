@@ -1,0 +1,18 @@
+apiVersion: v1
+appVersion: "v1.2.0"
+description: cert manager issuer
+home: https://github.com/jetstack/cert-manager
+icon: https://raw.githubusercontent.com/jetstack/cert-manager/master/logo/logo.png
+keywords:
+  - cert-manager
+  - kube-lego
+  - letsencrypt
+  - tls
+maintainers:
+  - name: eumel8 # Frank Kloeker
+    email: f.kloeker@telekom.de
+    url: https://www.telekom.com
+name: cert-manager-issuer
+sources:
+  - https://github.com/jetstack/cert-manager
+version: v1.2.1

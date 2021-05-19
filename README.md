@@ -22,6 +22,10 @@ Content:
   [(src)](https://github.com/mcsps/helm-charts/tree/master/charts/openstack-service-loadbalancer)
 * [cinder-csi-snapshot-crds](charts/cinder-csi-snapshot-crds) - 
   [(src)](https://github.com/mcsps/helm-charts/tree/master/charts/cinder-csi-snapshot-crds)
+* [cert-manager-crd](charts/cert-manager-crd) - 
+  [(src)](https://github.com/mcsps/helm-charts/tree/master/charts/cert-manager-crd)
+* [cert-manager-issuer](charts/cert-manager-issuer) - 
+  [(src)](https://github.com/mcsps/helm-charts/tree/master/charts/cert-manager-issuer)
 
 
 Credits:
