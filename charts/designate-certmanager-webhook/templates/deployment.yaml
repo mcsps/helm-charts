@@ -28,7 +28,7 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       initContainers:
         - name: wait-for-tls-secret
-          image: alpine:latest
+          image: "{{ .Values.image.alpine.repository }}:{{ .Values.image.alpine.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
           - name: certs
@@ -42,7 +42,7 @@ spec:
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
         - name: add-apiservice
-          image: bitnami/kubectl:latest
+          image: "{{ .Values.image.kubectl.repository }}:{{ .Values.image.kubectl.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
             - name: apiservice-config
