@@ -3,7 +3,7 @@ entries:
   cert-manager-crd:
   - apiVersion: v1
     appVersion: v1.5.3
-    created: "2021-08-25T15:33:19.272358776+02:00"
+    created: "2021-11-23T14:30:12.848310576+01:00"
     description: Custom Resource Definitions (CRDs) for cert-manager.
     digest: 0d9445b97040e4d0a286240e5dc62a1231085502e4793dfae4a2619a00cf0eeb
     home: https://github.com/jetstack/cert-manager
@@ -25,7 +25,7 @@ entries:
     version: v1.5.3
   - apiVersion: v1
     appVersion: v1.2.0
-    created: "2021-08-25T15:33:19.2671572+02:00"
+    created: "2021-11-23T14:30:12.824393876+01:00"
     description: Custom Resource Definitions (CRDs) for cert-manager.
     digest: 5f756787d644f024615c9b4f8c44c73960484906d1318c07f74c9161c12a8164
     home: https://github.com/jetstack/cert-manager
@@ -48,7 +48,7 @@ entries:
   cert-manager-issuer:
   - apiVersion: v1
     appVersion: v1.2.0
-    created: "2021-08-25T15:33:19.272900862+02:00"
+    created: "2021-11-23T14:30:12.849665886+01:00"
     description: cert manager issuer
     digest: bf54456da844d1f06f38423ca47a55753dd34ef0a6b1c5e6c1fd16c3fec330b1
     home: https://github.com/jetstack/cert-manager
@@ -71,7 +71,7 @@ entries:
   cinder-csi-snapshot-crds:
   - apiVersion: v1
     appVersion: latest
-    created: "2021-08-25T15:33:19.273424635+02:00"
+    created: "2021-11-23T14:30:12.851404243+01:00"
     description: CRDs for Cinder CSI Chart Snapshot Controller
     digest: 3274cb298cda5f6edba73bb99511b6b4f5a645f2c1314e69c75d23396ef57aeb
     home: https://github.com/kubernetes-csi/external-snapshotter/tree/master/client/config/crd
@@ -86,7 +86,16 @@ entries:
   designate-certmanager-webhook:
   - apiVersion: v1
     appVersion: 0.2.12
-    created: "2021-08-25T15:33:19.274450269+02:00"
+    created: "2021-11-23T14:30:12.856927943+01:00"
+    description: ACME webhook Implementation for OpenStack Designate
+    digest: c651b16dcf8c6d2a9591eb808c2df5ff7d64e7ca23cf7f193c4f2b4707b705c1
+    name: designate-certmanager-webhook
+    urls:
+    - https://mcsps.github.io/helm-charts/designate-certmanager-webhook-0.2.15.tgz
+    version: 0.2.15
+  - apiVersion: v1
+    appVersion: 0.2.12
+    created: "2021-11-23T14:30:12.855101002+01:00"
     description: ACME webhook Implementation for OpenStack Designate
     digest: 56775a561270856e24750e4fa0c10b40993b67cc557102f141bfb0a12176adee
     name: designate-certmanager-webhook
@@ -95,7 +104,7 @@ entries:
     version: 0.2.14
   - apiVersion: v1
     appVersion: 0.2.12
-    created: "2021-08-25T15:33:19.274009883+02:00"
+    created: "2021-11-23T14:30:12.853155975+01:00"
     description: ACME webhook Implementation for OpenStack Designate
     digest: b7326c7f706b79d8484b18f18647ba5d66d621bff9623e5d419479c48cc4bb7b
     name: designate-certmanager-webhook
@@ -105,7 +114,7 @@ entries:
   openstack-service-loadbalancer:
   - apiVersion: v1
     appVersion: latest
-    created: "2021-08-25T15:33:19.274960285+02:00"
+    created: "2021-11-23T14:30:12.857702079+01:00"
     description: Openstack Service Loadbalancer Helm Chart
     digest: 1c2c80d8943ae78dfd2fcba046994718bc226e8eb820677c4350e21bb6c442a9
     home: https://github.com/kubernetes/cloud-provider-openstack
@@ -118,4 +127,4 @@ entries:
     urls:
     - https://mcsps.github.io/helm-charts/openstack-service-loadbalancer-1.0.0.tgz
     version: 1.0.0
-generated: "2021-08-25T15:33:19.256825602+02:00"
+generated: "2021-11-23T14:30:12.79792185+01:00"
