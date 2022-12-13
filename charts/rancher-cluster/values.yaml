@@ -1,0 +1,7 @@
+image:
+
+rancher:
+  url: https://127.0.0.1
+  apitoken: 1234567
+
+clustername: example
