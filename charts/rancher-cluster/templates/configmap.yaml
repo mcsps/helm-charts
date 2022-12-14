@@ -11,12 +11,8 @@ data:
     AGENTURL=`curl -s "$RANCHERURL/v3/clusters/${CLUSTERID}/clusterregistrationtoken/$ID" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" | jq -r .manifestUrl`
     echo "AGENTURL: ${AGENTURL}"
     echo "apply to cluster..."
-    kubectl wait pod/$CLUSTERNAME-vcluster-0 --for=condition=ready
-    kubectl exec -it $CLUSTERNAME-vcluster-0 -c vcluster -- kubectl apply -f "${AGENTURL}"
-    # vcluster connect -n $CLUSTERNAME $CLUSTERNAME-vcluster -- "${AGENTCOMMAND}"
-    # add the kind cluster
-    # kubectl cluster-info --context kind-${KIND_CLUSTER_NAME}
-    # eval "${AGENTCOMMAND}"
+    kubectl wait pod/$CLUSTERNAME-vcluster-0 --for=condition=ready --timeout=300s
+    kubectl exec $CLUSTERNAME-vcluster-0 -c vcluster -- kubectl apply -f "${AGENTURL}"
 kind: ConfigMap
 metadata:
   labels:
