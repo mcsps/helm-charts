@@ -32,3 +32,4 @@ spec:
           defaultMode: 0755
           name: {{ .Release.Name }}
         name: {{ .Release.Name }}
+      serviceAccountName: {{ .Release.Name }}
