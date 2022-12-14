@@ -8,7 +8,7 @@ data:
     AGENTCOMMAND=`curl -s "$RANCHERURL/v3/clusters/${CLUSTERID}/clusterregistrationtoken/$ID" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" | jq -r .insecureCommand`
     echo "${AGENTCOMMAND}"
     sleep 30
-    vcluster connect -n $CLUSTERNAME $CLUSTERNAME -- "${AGENTCOMMAND}"
+    vcluster connect -n $CLUSTERNAME $CLUSTERNAME-vcluster -- "${AGENTCOMMAND}"
 kind: ConfigMap
 metadata:
   labels:
