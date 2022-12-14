@@ -13,12 +13,27 @@ metadata:
     app: {{ .Release.Name }}
   name: {{ .Release.Name }}
 rules:
-  - apiGroups: [""]
-    resources: ["pods"]
-    verbs: ["get", "list"]
-  - apiGroups: ["apps"]
-    resources: ["statefulsets", "deployments"]
-    verbs: ["get", "list"]
+  - apiGroups:
+    - ""
+    resources:
+    - pods
+    verbs:
+    - get
+    - list
+  - apiGroups:
+    - "apps"
+    resources:
+    - statefulsets
+    - deployments
+    verbs:
+    - get
+    - list
+  - apiGroups:
+    - ""
+    resources:
+    - pods/exec
+    verbs:
+    - create
 ---
 
 apiVersion: rbac.authorization.k8s.io/v1
