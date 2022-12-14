@@ -3,6 +3,7 @@ data:
   run.sh: |
     CLUSTERRESPONSE=`curl -s "$RANCHERURL/v3/cluster" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" --data-binary '{"type":"cluster","name":"'$CLUSTERNAME'","import":true}'`
     CLUSTERID=`echo $CLUSTERRESPONSE | jq -r .id`
+    echo $CLUSTERID
     ID=`curl -s "$RANCHERURL/v3/clusters/${CLUSTERID}/clusterregistrationtoken" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" --data-binary '{"type":"clusterRegistrationToken","clusterId":"'$CLUSTERID'"}'  |jq -r .id`
     AGENTCOMMAND=`curl -s "$RANCHERURL/v3/clusters/${CLUSTERID}/clusterregistrationtoken/$ID" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" | jq -r .insecureCommand`
     echo "${AGENTCOMMAND}"
