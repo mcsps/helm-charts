@@ -1,7 +1,3 @@
-# cert-manager-crd
+# rancher-cluster
 
-Helm Chart to deploy Custom Resource Definitions (CRDs) of the cert-manager.
-
-IMPORTANT: The CRD chart **MUST** be installed before the actual cert-manager chart.
-
-Source: https://github.com/jetstack/cert-manager/tree/master/deploy/charts/cert-manager
+Helm Chart to deploy a job to register a cluster in Rancher
