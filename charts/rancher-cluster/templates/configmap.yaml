@@ -18,6 +18,8 @@ data:
       echo "apply to cluster..."
       kubectl wait pod/$CLUSTERNAME-vcluster-0 --for=condition=ready --timeout=300s
       kubectl exec $CLUSTERNAME-vcluster-0 -c vcluster -- kubectl apply -f "${AGENTURL}"
+      sleep 4
+      kubectl exec $CLUSTERNAME-vcluster-0 -c vcluster -- kubectl -n cattle-system set image deployment cattle-cluster-agent cluster-register=mtr.devops.telekom.de/rancher/rancher-agent:v2.6.13
     done
 kind: ConfigMap
 metadata:

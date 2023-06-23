@@ -3,7 +3,7 @@ entries:
   cert-manager-crd:
   - apiVersion: v1
     appVersion: v1.8.2
-    created: "2023-01-26T14:42:47.255153+01:00"
+    created: "2023-06-23T19:45:54.780106+02:00"
     description: Custom Resource Definitions (CRDs) for cert-manager.
     digest: e14e8ce516891fc5210217c9c48698a1c76dc5f6329d29c2cca4f222b43dfa0f
     home: https://github.com/jetstack/cert-manager
@@ -25,7 +25,7 @@ entries:
     version: v1.8.2
   - apiVersion: v1
     appVersion: v1.7.1
-    created: "2023-01-26T14:42:47.25038+01:00"
+    created: "2023-06-23T19:45:54.771671+02:00"
     description: Custom Resource Definitions (CRDs) for cert-manager.
     digest: 1321b5e8978b4ffb56b1fb049ed878a73ea045cc4777d1baf74668c85ff5024c
     home: https://github.com/jetstack/cert-manager
@@ -47,7 +47,7 @@ entries:
     version: v1.7.1
   - apiVersion: v1
     appVersion: v1.5.3
-    created: "2023-01-26T14:42:47.242869+01:00"
+    created: "2023-06-23T19:45:54.765873+02:00"
     description: Custom Resource Definitions (CRDs) for cert-manager.
     digest: 0d9445b97040e4d0a286240e5dc62a1231085502e4793dfae4a2619a00cf0eeb
     home: https://github.com/jetstack/cert-manager
@@ -69,7 +69,7 @@ entries:
     version: v1.5.3
   - apiVersion: v1
     appVersion: v1.2.0
-    created: "2023-01-26T14:42:47.233909+01:00"
+    created: "2023-06-23T19:45:54.752946+02:00"
     description: Custom Resource Definitions (CRDs) for cert-manager.
     digest: 5f756787d644f024615c9b4f8c44c73960484906d1318c07f74c9161c12a8164
     home: https://github.com/jetstack/cert-manager
@@ -92,7 +92,7 @@ entries:
   cert-manager-issuer:
   - apiVersion: v1
     appVersion: v1.2.0
-    created: "2023-01-26T14:42:47.257815+01:00"
+    created: "2023-06-23T19:45:54.786648+02:00"
     description: cert manager issuer
     digest: bf54456da844d1f06f38423ca47a55753dd34ef0a6b1c5e6c1fd16c3fec330b1
     home: https://github.com/jetstack/cert-manager
@@ -115,7 +115,7 @@ entries:
   cinder-csi-snapshot-crds:
   - apiVersion: v1
     appVersion: 4.0.0
-    created: "2023-01-26T14:42:47.264135+01:00"
+    created: "2023-06-23T19:45:54.798011+02:00"
     description: CRDs for Cinder CSI Chart Snapshot Controller
     digest: ba662b5a7fd472e1e7f5ca3277de434296a85a5b023064c35a1986e7da9ca0b6
     home: https://github.com/kubernetes-csi/external-snapshotter/tree/master/client/config/crd
@@ -129,7 +129,7 @@ entries:
     version: 4.0.0
   - apiVersion: v1
     appVersion: latest
-    created: "2023-01-26T14:42:47.261113+01:00"
+    created: "2023-06-23T19:45:54.792401+02:00"
     description: CRDs for Cinder CSI Chart Snapshot Controller
     digest: 3274cb298cda5f6edba73bb99511b6b4f5a645f2c1314e69c75d23396ef57aeb
     home: https://github.com/kubernetes-csi/external-snapshotter/tree/master/client/config/crd
@@ -144,7 +144,7 @@ entries:
   designate-certmanager-webhook:
   - apiVersion: v1
     appVersion: 0.2.18
-    created: "2023-01-26T14:42:47.274426+01:00"
+    created: "2023-06-23T19:45:54.819616+02:00"
     description: ACME webhook Implementation for OpenStack Designate
     digest: cedbb7dee1bb04c6b67a76032bf16500980565848672bf95bf8318e80c2184b6
     name: designate-certmanager-webhook
@@ -153,7 +153,7 @@ entries:
     version: 0.3.0
   - apiVersion: v1
     appVersion: 0.2.12
-    created: "2023-01-26T14:42:47.271847+01:00"
+    created: "2023-06-23T19:45:54.813518+02:00"
     description: ACME webhook Implementation for OpenStack Designate
     digest: c651b16dcf8c6d2a9591eb808c2df5ff7d64e7ca23cf7f193c4f2b4707b705c1
     name: designate-certmanager-webhook
@@ -162,7 +162,7 @@ entries:
     version: 0.2.15
   - apiVersion: v1
     appVersion: 0.2.12
-    created: "2023-01-26T14:42:47.2696+01:00"
+    created: "2023-06-23T19:45:54.808674+02:00"
     description: ACME webhook Implementation for OpenStack Designate
     digest: 56775a561270856e24750e4fa0c10b40993b67cc557102f141bfb0a12176adee
     name: designate-certmanager-webhook
@@ -171,7 +171,7 @@ entries:
     version: 0.2.14
   - apiVersion: v1
     appVersion: 0.2.12
-    created: "2023-01-26T14:42:47.266793+01:00"
+    created: "2023-06-23T19:45:54.80298+02:00"
     description: ACME webhook Implementation for OpenStack Designate
     digest: b7326c7f706b79d8484b18f18647ba5d66d621bff9623e5d419479c48cc4bb7b
     name: designate-certmanager-webhook
@@ -181,7 +181,7 @@ entries:
   openstack-service-loadbalancer:
   - apiVersion: v1
     appVersion: latest
-    created: "2023-01-26T14:42:47.277046+01:00"
+    created: "2023-06-23T19:45:54.826127+02:00"
     description: Openstack Service Loadbalancer Helm Chart
     digest: 1c2c80d8943ae78dfd2fcba046994718bc226e8eb820677c4350e21bb6c442a9
     home: https://github.com/kubernetes/cloud-provider-openstack
@@ -207,7 +207,7 @@ entries:
       catalog.cattle.io/release-name: prometheus-federator
     apiVersion: v2
     appVersion: 0.2.0-rc4
-    created: "2023-01-26T14:42:47.278554+01:00"
+    created: "2023-06-23T19:45:54.835526+02:00"
     dependencies:
     - condition: helmProjectOperator.enabled
       name: helmProjectOperator
@@ -221,8 +221,21 @@ entries:
     version: 0.2.0-rc4
   rancher-cluster:
   - apiVersion: v2
+    appVersion: 0.0.13
+    created: "2023-06-23T19:45:54.859035+02:00"
+    description: Job for create a cluster import in Rancher
+    digest: 75478e50479ed95aa154f6aaf28a7b987b2033b9c1ff99658bbf1c156866b4f7
+    maintainers:
+    - email: f.kloeker@telekom.de
+      name: eumel8
+      url: https://www.telekom.com
+    name: rancher-cluster
+    urls:
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.13.tgz
+    version: 0.0.13
+  - apiVersion: v2
     appVersion: 0.0.12
-    created: "2023-01-26T14:42:47.287393+01:00"
+    created: "2023-06-23T19:45:54.857504+02:00"
     description: Job for create a cluster import in Rancher
     digest: 99607f1cc31294c295da877961ba4e093ada14057efc0735c5dcdb15da2feb5b
     maintainers:
@@ -235,7 +248,7 @@ entries:
     version: 0.0.12
   - apiVersion: v2
     appVersion: 0.0.11
-    created: "2023-01-26T14:42:47.286144+01:00"
+    created: "2023-06-23T19:45:54.852622+02:00"
     description: Job for create a cluster import in Rancher
     digest: 97fbb1df4c83975b0ae81fe71d1294683b89e0bb052a8522afcc1bb7c0e625cb
     maintainers:
@@ -248,7 +261,7 @@ entries:
     version: 0.0.11
   - apiVersion: v2
     appVersion: 0.0.10
-    created: "2023-01-26T14:42:47.284507+01:00"
+    created: "2023-06-23T19:45:54.847616+02:00"
     description: Job for create a cluster import in Rancher
     digest: 25fe089407046e600c80441541f20925e82688d40a469022c94c802aa5e8aae5
     maintainers:
@@ -261,7 +274,7 @@ entries:
     version: 0.0.10
   - apiVersion: v2
     appVersion: 0.0.9
-    created: "2023-01-26T14:42:47.297729+01:00"
+    created: "2023-06-23T19:45:54.888735+02:00"
     description: Job for create a cluster import in Rancher
     digest: 0aab29c0834d220b77024d8bc08f51492f4c6d182dd970851a2e408771701bd3
     maintainers:
@@ -274,7 +287,7 @@ entries:
     version: 0.0.9
   - apiVersion: v2
     appVersion: 0.0.8
-    created: "2023-01-26T14:42:47.295581+01:00"
+    created: "2023-06-23T19:45:54.884834+02:00"
     description: Job for create a cluster import in Rancher
     digest: 639faea0398ac2170938fa70a4d5358bba0ecfadd01fb107b02736aff779caf5
     maintainers:
@@ -287,7 +300,7 @@ entries:
     version: 0.0.8
   - apiVersion: v2
     appVersion: 0.0.7
-    created: "2023-01-26T14:42:47.294542+01:00"
+    created: "2023-06-23T19:45:54.881252+02:00"
     description: Job for create a cluster import in Rancher
     digest: df3770bbb7dabe50cb3a803d865c1340e7da918b565d8a9c7aad1c336d45dfa7
     maintainers:
@@ -300,7 +313,7 @@ entries:
     version: 0.0.7
   - apiVersion: v2
     appVersion: 0.0.6
-    created: "2023-01-26T14:42:47.293439+01:00"
+    created: "2023-06-23T19:45:54.877715+02:00"
     description: Job for create a cluster import in Rancher
     digest: c46fd54c2024722c013d16ddebc81351cff4bbdfde4217666b6a6866c19b8556
     maintainers:
@@ -313,7 +326,7 @@ entries:
     version: 0.0.6
   - apiVersion: v2
     appVersion: 0.0.5
-    created: "2023-01-26T14:42:47.292334+01:00"
+    created: "2023-06-23T19:45:54.874001+02:00"
     description: Job for create a cluster import in Rancher
     digest: dec691de440f211bc36d32bd08ae0bfcfc465d78df2ca39973d6fd0c7207fa58
     maintainers:
@@ -326,7 +339,7 @@ entries:
     version: 0.0.5
   - apiVersion: v2
     appVersion: 0.0.4
-    created: "2023-01-26T14:42:47.291109+01:00"
+    created: "2023-06-23T19:45:54.870524+02:00"
     description: Job for create a cluster import in Rancher
     digest: e51e7b7c6c37b990e6cf6b6629289383f24811d199453038390c2d135143827b
     maintainers:
@@ -339,7 +352,7 @@ entries:
     version: 0.0.4
   - apiVersion: v2
     appVersion: 0.0.3
-    created: "2023-01-26T14:42:47.289776+01:00"
+    created: "2023-06-23T19:45:54.865793+02:00"
     description: Job for create a cluster import in Rancher
     digest: fe4cd9a9c5c6d343832b43f5630abbbdfc66c612092e8811c5c26b885940a8f0
     maintainers:
@@ -352,7 +365,7 @@ entries:
     version: 0.0.3
   - apiVersion: v2
     appVersion: 0.0.2
-    created: "2023-01-26T14:42:47.288568+01:00"
+    created: "2023-06-23T19:45:54.862781+02:00"
     description: Job for create a cluster import in Rancher
     digest: 9974082e2164f8b5ea7027c92d7c7167f9aeec171a365ee17890442d04e8a3ce
     maintainers:
@@ -365,7 +378,7 @@ entries:
     version: 0.0.2
   - apiVersion: v2
     appVersion: 0.0.1
-    created: "2023-01-26T14:42:47.28128+01:00"
+    created: "2023-06-23T19:45:54.841798+02:00"
     description: Job for create a cluster import in Rancher
     digest: f0a4d2a6770f27e48b8a87861bbf84dec85499d1c4f0bb60c5b6567afd7ba856
     maintainers:
@@ -387,7 +400,7 @@ entries:
       catalog.cattle.io/release-name: rancher-project-monitoring
     apiVersion: v2
     appVersion: 0.59.1
-    created: "2023-01-26T14:42:47.305147+01:00"
+    created: "2023-06-23T19:45:54.909148+02:00"
     dependencies:
     - condition: grafana.enabled
       name: grafana
@@ -414,4 +427,4 @@ entries:
     urls:
     - https://mcsps.github.io/helm-charts/rancher-project-monitoring-0.2.0-rc4.tgz
     version: 0.2.0-rc4
-generated: "2023-01-26T14:42:47.224647+01:00"
+generated: "2023-06-23T19:45:54.736336+02:00"
