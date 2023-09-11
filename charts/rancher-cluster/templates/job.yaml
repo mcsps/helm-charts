@@ -21,8 +21,16 @@ spec:
         - mountPath: /sidecar
           name: {{ .Release.Name }}
         env:
+        {{- if not .Values.rancher.apitoken }}
+        - name: APITOKEN
+          valueFrom:
+            secretKeyRef:
+              name: apitoken
+              key: APITOKEN
+        {{- else }}
         - name: APITOKEN
           value: {{ .Values.rancher.apitoken }}
+        {{- end }}
         - name: RANCHERURL
           value: {{ .Values.rancher.url }}
         - name: CLUSTERNAME
