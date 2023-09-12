@@ -12,14 +12,11 @@ spec:
     spec:
       restartPolicy: Never
       containers:
-      - image:  {{ .Values.image }}
+      - args: ["/sidecar/run.sh"]
+        command: ["sh","-c"]
+        image:  {{ .Values.image }}
         imagePullPolicy: Always
         name: register
-        command: ["sh","-c"]
-        args: ["/sidecar/run.sh"]
-        volumeMounts:
-        - mountPath: /sidecar
-          name: {{ .Release.Name }}
         env:
         {{- if not .Values.rancher.apitoken }}
         - name: APITOKEN
@@ -35,9 +32,23 @@ spec:
           value: {{ .Values.rancher.url }}
         - name: CLUSTERNAME
           value: {{ .Values.clustername }}
+        securityContext:
+          runAsNonRoot: true
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+          privileged: false
+          allowPrivilegeEscalation: false
+          runAsUser: 1000
+        volumeMounts:
+        - mountPath: /sidecar
+          name: {{ .Release.Name }}
+      serviceAccountName: {{ .Release.Name }}
+      securityContext:
+        fsGroup: 1000
       volumes:
       - configMap:
           defaultMode: 0755
           name: {{ .Release.Name }}
         name: {{ .Release.Name }}
-      serviceAccountName: {{ .Release.Name }}
