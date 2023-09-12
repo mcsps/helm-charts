@@ -8,7 +8,7 @@ data:
     done
     CLUSTERID=`echo $CLUSTERRESPONSE | jq -r .id`
     echo "CLUSTERID: $CLUSTERID"
-    while [ -z "$ID" ]; do
+    while [ -n "$ID" ]; do
       ID=`curl -s "$RANCHERURL/v3/clusters/${CLUSTERID}/clusterregistrationtoken" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" --data-binary '{"type":"clusterRegistrationToken","clusterId":"'$CLUSTERID'"}'  |jq -r .id`
       echo "ID: $ID"
     done
