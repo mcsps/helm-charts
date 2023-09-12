@@ -48,6 +48,8 @@ spec:
       serviceAccountName: {{ .Release.Name }}
       securityContext:
         fsGroup: 1000
+        supplementalGroups:
+        - 1000
       volumes:
       - configMap:
           defaultMode: 0755
