@@ -41,6 +41,7 @@ spec:
           privileged: false
           allowPrivilegeEscalation: false
           runAsUser: 1000
+          runAsGroup: 1000
         volumeMounts:
         - mountPath: /sidecar
           name: {{ .Release.Name }}
