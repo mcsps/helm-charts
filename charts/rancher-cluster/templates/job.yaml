@@ -13,7 +13,7 @@ spec:
       restartPolicy: Never
       containers:
       - args: ["/sidecar/run.sh"]
-        command: ["sh","-c"]
+        command: ["bash","-c"]
         image:  {{ .Values.image }}
         imagePullPolicy: Always
         name: register
