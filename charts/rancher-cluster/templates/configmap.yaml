@@ -8,14 +8,14 @@ data:
     done
     CLUSTERID=`echo $CLUSTERRESPONSE | jq -r .id`
     echo "CLUSTERID: $CLUSTERID"
-    while [ -n "$ID" ]; do
+    while [[ ! "$ID" =~ ":" ]]; do
       ID=`curl -s "$RANCHERURL/v3/clusters/${CLUSTERID}/clusterregistrationtoken" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" --data-binary '{"type":"clusterRegistrationToken","clusterId":"'$CLUSTERID'"}'  |jq -r .id`
       echo "ID: $ID"
     done
-    while [[ $AGENTURL = *clusters* ]]; do
+    while [[ ! "$AGENTURL" =~ "import" ]]; do
       AGENTURL=`curl -s "$RANCHERURL/v3/clusters/${CLUSTERID}/clusterregistrationtoken/$ID" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" | jq -r .manifestUrl`
-    done
       echo "AGENTURL: ${AGENTURL}"
+    done
       kubectl wait pod/$CLUSTERNAME-vcluster-0 --for=condition=ready --timeout=300s
       echo "apply to cluster..."
       kubectl exec $CLUSTERNAME-vcluster-0 -c vcluster -- kubectl apply -f "${AGENTURL}"
