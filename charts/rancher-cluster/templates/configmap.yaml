@@ -12,7 +12,7 @@ data:
       ID=`curl -s "$RANCHERURL/v3/clusters/${CLUSTERID}/clusterregistrationtoken" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" --data-binary '{"type":"clusterRegistrationToken","clusterId":"'$CLUSTERID'"}'  |jq -r .id`
       echo "ID: $ID"
     done
-    while [ -z "$AGENTURL" ]; do
+    while [ -n "$AGENTURL" ]; do
       AGENTURL=`curl -s "$RANCHERURL/v3/clusters/${CLUSTERID}/clusterregistrationtoken/$ID" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" | jq -r .manifestUrl`
       echo "AGENTURL: ${AGENTURL}"
     done
