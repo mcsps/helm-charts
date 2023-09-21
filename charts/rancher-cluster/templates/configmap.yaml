@@ -14,10 +14,10 @@ data:
     done
     while [ -n "$AGENTURL" ]; do
       AGENTURL=`curl -s "$RANCHERURL/v3/clusters/${CLUSTERID}/clusterregistrationtoken/$ID" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" | jq -r .manifestUrl`
-      echo "AGENTURL: ${AGENTURL}"
     done
-      echo "apply to cluster..."
+      echo "AGENTURL: ${AGENTURL}"
       kubectl wait pod/$CLUSTERNAME-vcluster-0 --for=condition=ready --timeout=300s
+      echo "apply to cluster..."
       kubectl exec $CLUSTERNAME-vcluster-0 -c vcluster -- kubectl apply -f "${AGENTURL}"
       sleep 4
       kubectl exec $CLUSTERNAME-vcluster-0 -c vcluster -- kubectl -n cattle-system set image deployment cattle-cluster-agent cluster-register=mtr.devops.telekom.de/rancher/rancher-agent:v2.7.5
