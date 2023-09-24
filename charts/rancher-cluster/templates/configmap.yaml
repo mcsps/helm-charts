@@ -18,6 +18,7 @@ data:
     done
       kubectl wait pod/$CLUSTERNAME-vcluster-0 --for=condition=ready --timeout=300s
       echo "apply to cluster..."
+      kubectl exec $CLUSTERNAME-vcluster-0 -c vcluster -- kubectl create ns cattle-system
       kubectl exec $CLUSTERNAME-vcluster-0 -c vcluster -- kubectl apply -f "${AGENTURL}"
       sleep 4
       kubectl exec $CLUSTERNAME-vcluster-0 -c vcluster -- kubectl -n cattle-system set image deployment cattle-cluster-agent cluster-register=mtr.devops.telekom.de/rancher/rancher-agent:v2.7.5
