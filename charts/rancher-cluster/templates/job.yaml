@@ -32,6 +32,13 @@ spec:
           value: {{ .Values.rancher.url }}
         - name: CLUSTERNAME
           value: {{ .Values.clustername }}
+        {{- if not .Values.targetnamespace }}
+        - name: TARGETNAMESPACE
+          value: {{ .Release.Namespace }}
+        {{- else }}
+        - name: TARGETNAMESPACE
+          value: {{ .Values.targetnamespace }}
+        {{- end }}
         securityContext:
           runAsNonRoot: true
           readOnlyRootFilesystem: true

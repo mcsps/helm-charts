@@ -1,7 +1,13 @@
 image: ghcr.io/mcsps/utils:latest
 
+# Rancher registration server url
 rancher:
   url: https://127.0.0.1
+# Rancher registration token (scope: local)
 #  apitoken: 1234567
 
+# Cluster name to appear in Rancher
 clustername: example
+
+# target namespace of the vcluster
+#targetnamespace:
