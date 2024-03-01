@@ -4,8 +4,8 @@ metadata:
   labels:
     job-name: {{ .Release.Name }}-delete
   name: {{ .Release.Name }}-delete
- annotations:
-   "helm.sh/hook": pre-delete
+  annotations:
+    helm.sh/hook: pre-delete
 spec:
   backoffLimit: 1
   completions: 1
