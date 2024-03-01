@@ -2,8 +2,8 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   labels:
-    job-name: {{ .Release.Name }}
-  name: {{ .Release.Name }}
+    job-name: {{ .Release.Name }}-create
+  name: {{ .Release.Name }}-create
 spec:
   backoffLimit: 1
   completions: 1
@@ -12,7 +12,7 @@ spec:
     spec:
       restartPolicy: Never
       containers:
-      - args: ["/sidecar/run.sh"]
+      - args: ["/sidecar/create.sh"]
         command: ["bash","-c"]
         image:  {{ .Values.image }}
         imagePullPolicy: Always

@@ -1,0 +1,66 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  labels:
+    job-name: {{ .Release.Name }}-delete
+  name: {{ .Release.Name }}-delete
+ annotations:
+   "helm.sh/hook": pre-delete
+spec:
+  backoffLimit: 1
+  completions: 1
+  parallelism: 1
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - args: ["/sidecar/delete.sh"]
+        command: ["bash","-c"]
+        image:  {{ .Values.image }}
+        imagePullPolicy: Always
+        name: register
+        env:
+        {{- if not .Values.rancher.apitoken }}
+        - name: APITOKEN
+          valueFrom:
+            secretKeyRef:
+              name: apitoken
+              key: APITOKEN
+        {{- else }}
+        - name: APITOKEN
+          value: {{ .Values.rancher.apitoken }}
+        {{- end }}
+        - name: RANCHERURL
+          value: {{ .Values.rancher.url }}
+        - name: CLUSTERNAME
+          value: {{ .Values.clustername }}
+        {{- if not .Values.targetnamespace }}
+        - name: TARGETNAMESPACE
+          value: {{ .Release.Namespace }}
+        {{- else }}
+        - name: TARGETNAMESPACE
+          value: {{ .Values.targetnamespace }}
+        {{- end }}
+        securityContext:
+          runAsNonRoot: true
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+          privileged: false
+          allowPrivilegeEscalation: false
+          runAsUser: 1000
+          runAsGroup: 1000
+        volumeMounts:
+        - mountPath: /sidecar
+          name: {{ .Release.Name }}
+      serviceAccountName: {{ .Release.Name }}
+      securityContext:
+        fsGroup: 1000
+        supplementalGroups:
+        - 1000
+      volumes:
+      - configMap:
+          defaultMode: 0755
+          name: {{ .Release.Name }}
+        name: {{ .Release.Name }}
