@@ -16,7 +16,7 @@ data:
       AGENTURL=`curl -s "$RANCHERURL/v3/clusters/${CLUSTERID}/clusterregistrationtoken/$ID" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" | jq -r .manifestUrl`
       echo "AGENTURL: ${AGENTURL}"
     done
-      kubectl wait pod/$CLUSTERNAME-vcluster-0 --for=condition=ready --timeout=300s
+      kubectl -n $TARGETNAMESPACE wait pod/$CLUSTERNAME-vcluster-0 --for=condition=ready --timeout=300s
       echo "apply to cluster..."
       kubectl -n $TARGETNAMESPACE exec $CLUSTERNAME-vcluster-0 -c vcluster -- kubectl create ns cattle-system
       kubectl -n $TARGETNAMESPACE exec $CLUSTERNAME-vcluster-0 -c vcluster -- kubectl apply -f "${AGENTURL}"
