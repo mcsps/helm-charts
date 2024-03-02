@@ -2,6 +2,7 @@ apiVersion: v1
 data:
   create.sh: |
     echo "CLUSTERNAME: $CLUSTERNAME"
+    curl "$RANCHERURL/v3/clusters" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" | jq 
     while [ -z "$CLUSTERRESPONSE" ]; do
       CLUSTERRESPONSE=`curl -s "$RANCHERURL/v3/cluster" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" --data-binary '{"type":"cluster","name":"'$CLUSTERNAME'","import":true}'`
       echo "CLUSTERRESPONSE: $CLUSTERRESPONSE"
@@ -23,8 +24,8 @@ data:
       sleep 4
   delete.sh: |
     echo "CLUSTERNAME: $CLUSTERNAME"
-    while [ -z "$CLUSTERRESPONCE" ]; do
-      CLUSTERRESPONCE=`curl -s "$RANCHERURL/v3/clusters?name=$CLUSTERNAME" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" | jq -r '.data[].id'`
+    while [ -z "$CLUSTERRESPONSE" ]; do
+      CLUSTERRESPONSE=`curl -s "$RANCHERURL/v3/clusters?name=$CLUSTERNAME" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" | jq -r '.data[].id'`
       echo "CLUSTERRESPONSE: $CLUSTERRESPONSE"
     done
     CLUSTERID=`echo $CLUSTERRESPONSE | | jq -r '.data[].id'`
