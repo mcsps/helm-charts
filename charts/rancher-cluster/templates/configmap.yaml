@@ -25,7 +25,7 @@ data:
   delete.sh: |
     echo "CLUSTERNAME: $CLUSTERNAME"
     while [ -z "$CLUSTERRESPONSE" ]; do
-      CLUSTERRESPONSE=`curl -s "$RANCHERURL/v3/clusters?name=$CLUSTERNAME" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" | jq -r '.data[].id'`
+      CLUSTERRESPONSE=`curl -s "$RANCHERURL/v3/clusters?name=$CLUSTERNAME" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN"`
       echo "CLUSTERRESPONSE: $CLUSTERRESPONSE"
     done
     CLUSTERID=`echo $CLUSTERRESPONSE | jq -r '.data[].id'`
