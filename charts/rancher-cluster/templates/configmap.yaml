@@ -28,7 +28,7 @@ data:
       CLUSTERRESPONSE=`curl -s "$RANCHERURL/v3/clusters?name=$CLUSTERNAME" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" | jq -r '.data[].id'`
       echo "CLUSTERRESPONSE: $CLUSTERRESPONSE"
     done
-    CLUSTERID=`echo $CLUSTERRESPONSE | | jq -r '.data[].id'`
+    CLUSTERID=`echo $CLUSTERRESPONSE | jq -r '.data[].id'`
     echo "CLUSTERID: $CLUSTERID"
     while [[ ! "$REMOVE" =~ "removing" ]]; do
       REMOVE=`curl -s -X DELETE "$RANCHERURL/v3/clusters/${CLUSTERID}" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" |jq -r .state`
