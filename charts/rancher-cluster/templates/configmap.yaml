@@ -19,8 +19,11 @@ data:
     done
       kubectl -n $TARGETNAMESPACE wait pod/$CLUSTERNAME-vcluster-0 --for=condition=ready --timeout=300s
       echo "apply to cluster..."
-      vcluster -n $TARGETNAMESPACE connect $CLUSTERNAME-vcluster -- kubectl create ns cattle-system
-      vcluster -n $TARGETNAMESPACE connect $CLUSTERNAME-vcluster -- kubectl apply -f "${AGENTURL}"
+      #vcluster -n $TARGETNAMESPACE connect $CLUSTERNAME-vcluster -- kubectl create ns cattle-system
+      #vcluster -n $TARGETNAMESPACE connect $CLUSTERNAME-vcluster -- kubectl apply -f "${AGENTURL}"
+      kubectl -n $TARGETNAMESPACE cp /usr/local/bin/kubectl $CLUSTERNAME-vcluster-0:/tmp/kubectl
+      kubectl -n $TARGETNAMESPACE exec $CLUSTERNAME-vcluster-0 -c syncer -- /tmp/kubectl --kubeconfig=/data/k3s-config/kube-config.yaml create ns cattle-system
+      kubectl -n $TARGETNAMESPACE exec $CLUSTERNAME-vcluster-0 -c syncer -- /tmp/kubectl --kubeconfig=/data/k3s-config/kube-config.yaml apply -f "${AGENTURL}"
       #kubectl -n $TARGETNAMESPACE exec $CLUSTERNAME-vcluster-0 -c syncer -- kubectl create ns cattle-system
       #kubectl -n $TARGETNAMESPACE exec $CLUSTERNAME-vcluster-0 -c syncer -- kubectl apply -f "${AGENTURL}"
       sleep 4
