@@ -19,8 +19,8 @@ data:
     done
       kubectl -n $TARGETNAMESPACE wait pod/$CLUSTERNAME-vcluster-0 --for=condition=ready --timeout=300s
       echo "apply to cluster..."
-      kubectl -n $TARGETNAMESPACE exec $CLUSTERNAME-vcluster-0 -c vcluster -- kubectl create ns cattle-system
-      kubectl -n $TARGETNAMESPACE exec $CLUSTERNAME-vcluster-0 -c vcluster -- kubectl apply -f "${AGENTURL}"
+      kubectl -n $TARGETNAMESPACE exec $CLUSTERNAME-vcluster-0 -c syncer -- kubectl create ns cattle-system
+      kubectl -n $TARGETNAMESPACE exec $CLUSTERNAME-vcluster-0 -c syncer -- kubectl apply -f "${AGENTURL}"
       sleep 4
   delete.sh: |
     echo "CLUSTERNAME: $CLUSTERNAME"
