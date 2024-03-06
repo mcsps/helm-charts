@@ -6,6 +6,7 @@ RUN curl -L https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-
 RUN curl -L https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh | bash -s -- /usr/local/bin
 RUN curl -sL https://raw.githubusercontent.com/crossplane/crossplane/master/install.sh | sh && mv crossplane /usr/local/bin/crossplane
 RUN curl -L -o vcluster "https://github.com/loft-sh/vcluster/releases/latest/download/vcluster-linux-amd64" && chmod +x vcluster && mv vcluster /usr/local/bin/vcluster
+RUN curl -L -o mc https://dl.min.io/client/mc/release/linux-amd64/mc && chmod +x mc && mv mc /usr/local/bin/mc
 
 RUN adduser -u 1000 -D appuser
 
