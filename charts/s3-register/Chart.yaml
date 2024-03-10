@@ -1,0 +1,9 @@
+apiVersion: v2
+appVersion: "0.0.1"
+description: Job for create a bucket and a user on S3 backend
+maintainers:
+  - name: eumel8 # Frank Kloeker
+    email: f.kloeker@telekom.de
+    url: https://www.telekom.com
+name: s3-register
+version: 0.0.1

@@ -1,0 +1,162 @@
+# this must be all-in-one file due the generated random string for the user secret
+{{ $s3secretkey := randAlphaNum 14 }}
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  labels:
+    app: {{ .Release.Name }}
+  name: {{ .Release.Name }}
+type: Opaque
+data:
+  s3accesskey: {{ .Values.clustername | b64enc | quote }}
+  s3secretkey: {{ $s3secretkey | b64enc | quote }}
+---
+apiVersion: v1
+data:
+  create.sh: |
+    echo "CLUSTERNAME: $CLUSTERNAME"
+    mc alias set minio $S3URL $S3ADMINUSER $S3ADMINPASSWORD
+    mc admin user add minio $CLUSTERNAME {{ $s3secretkey }}|| exit 1
+    mc mb minio/$CLUSTERNAME || exit 1
+    mc admin policy create minio $CLUSTERNAME /sidecar/policy.json || exit 1
+    mc admin policy attach minio $CLUSTERNAME --user $CLUSTERNAME || exit 1
+  policy.json: |
+      {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": ["s3:GetBucketLocation","s3:GetObject","s3:PutObject", "s3:ListBucket"],
+            "Resource": ["arn:aws:s3:::{{ .Values.clustername }}/*", "arn:aws:s3:::{{ .Values.clustername }}"]
+          }
+        ]
+      }
+  delete.sh: |
+    echo "CLUSTERNAME: $CLUSTERNAME"
+    mc alias set minio $S3URL $S3ADMINUSER $S3ADMINPASSWORD
+    mc admin policy detach minio $CLUSTERNAME --user $CLUSTERNAME || exit 1
+    mc admin policy remove minio $CLUSTERNAME || exit 1
+    mc rb minio/$CLUSTERNAME --force || exit 1
+    mc admin user remove minio $CLUSTERNAME || exit 1
+kind: ConfigMap
+metadata:
+  labels:
+    app: {{ .Release.Name }}
+  name: {{ .Release.Name }}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  labels:
+    job-name: {{ .Release.Name }}-create
+  name: {{ .Release.Name }}-create
+spec:
+  backoffLimit: 1
+  completions: 1
+  parallelism: 1
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - args: ["/sidecar/create.sh"]
+        command: ["bash","-c"]
+        image:  {{ .Values.image }}
+        imagePullPolicy: Always
+        name: register
+        env:
+        - name: S3URL
+          value: {{ .Values.s3.url }}
+        - name: S3ADMINUSER
+          value: {{ .Values.s3.adminuser }}
+        - name: S3ADMINPASSWORD
+          value: {{ .Values.s3.adminpassword }}
+        - name: S3SECRETKEY
+          value: {{ $s3secretkey }}
+        - name: CLUSTERNAME
+          value: {{ .Values.clustername }}
+        securityContext:
+          runAsNonRoot: true
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+          privileged: false
+          allowPrivilegeEscalation: false
+          runAsUser: 1000
+          runAsGroup: 1000
+        volumeMounts:
+        - mountPath: /sidecar
+          name: {{ .Release.Name }}
+        - mountPath: /home/appuser/.mc
+          name: mc
+      serviceAccountName: {{ .Release.Name }}
+      securityContext:
+        fsGroup: 1000
+        supplementalGroups:
+        - 1000
+      volumes:
+      - configMap:
+          defaultMode: 0755
+          name: {{ .Release.Name }}
+        name: {{ .Release.Name }}
+      - emtpyDir:
+        name: mc
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  labels:
+    job-name: {{ .Release.Name }}-delete
+  name: {{ .Release.Name }}-delete
+  annotations:
+    helm.sh/hook: pre-delete
+spec:
+  backoffLimit: 1
+  completions: 1
+  parallelism: 1
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - args: ["/sidecar/delete.sh"]
+        command: ["bash","-c"]
+        image:  {{ .Values.image }}
+        imagePullPolicy: Always
+        name: register
+        env:
+        - name: S3URL
+          value: {{ .Values.s3.url }}
+        - name: S3ADMINUSER
+          value: {{ .Values.s3.adminuser }}
+        - name: S3ADMINPASSWORD
+          value: {{ .Values.s3.adminpassword }}
+        - name: CLUSTERNAME
+          value: {{ .Values.clustername }}
+        securityContext:
+          runAsNonRoot: true
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+            - ALL
+          privileged: false
+          allowPrivilegeEscalation: false
+          runAsUser: 1000
+          runAsGroup: 1000
+        volumeMounts:
+        - mountPath: /sidecar
+          name: {{ .Release.Name }}
+        - mountPath: /home/appuser/.mc
+          name: mc
+      serviceAccountName: {{ .Release.Name }}
+      securityContext:
+        fsGroup: 1000
+        supplementalGroups:
+        - 1000
+      volumes:
+      - configMap:
+          defaultMode: 0755
+          name: {{ .Release.Name }}
+        name: {{ .Release.Name }}
+      - emptyDir:
+        name: mc

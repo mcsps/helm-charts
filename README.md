@@ -28,6 +28,10 @@ Content:
   [(src)](https://github.com/mcsps/helm-charts/tree/master/charts/cert-manager-issuer)
 * [designate-certmanager-webhook/](charts/designate-certmanager-webhook) -
   [(src)](https://github.com/mcsps/helm-charts/tree/master/charts/designate-certmanager-webhook)
+* [rancher-cluster/](charts/rancher-cluster) -
+  [(src)](https://github.com/mcsps/helm-charts/tree/master/charts/rancher-cluster)
+* [s3-register/](charts/s3-register) -
+  [(src)](https://github.com/mcsps/helm-charts/tree/master/charts/s3-register)
 
 
 Credits:
