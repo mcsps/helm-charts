@@ -1,20 +1,21 @@
+{{ $insecure := ternary "--insecure" "" .Values.insecure }}
 apiVersion: v1
 data:
   create.sh: |
     echo "CLUSTERNAME: $CLUSTERNAME"
-    curl "$RANCHERURL/v3/clusters" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" | jq 
+    curl $insecure "$RANCHERURL/v3/clusters" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" | jq 
     while [ -z "$CLUSTERRESPONSE" ]; do
-      CLUSTERRESPONSE=`curl -s "$RANCHERURL/v3/cluster" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" --data-binary '{"type":"cluster","name":"'$CLUSTERNAME'","import":true}'`
+      CLUSTERRESPONSE=`curl $insecure -s "$RANCHERURL/v3/cluster" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" --data-binary '{"type":"cluster","name":"'$CLUSTERNAME'","import":true}'`
       echo "CLUSTERRESPONSE: $CLUSTERRESPONSE"
     done
     CLUSTERID=`echo $CLUSTERRESPONSE | jq -r .id`
     echo "CLUSTERID: $CLUSTERID"
     while [[ ! "$ID" =~ ":" ]]; do
-      ID=`curl -s "$RANCHERURL/v3/clusters/${CLUSTERID}/clusterregistrationtoken" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" --data-binary '{"type":"clusterRegistrationToken","clusterId":"'$CLUSTERID'"}'  |jq -r .id`
+      ID=`curl $insecure -s "$RANCHERURL/v3/clusters/${CLUSTERID}/clusterregistrationtoken" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" --data-binary '{"type":"clusterRegistrationToken","clusterId":"'$CLUSTERID'"}'  |jq -r .id`
       echo "ID: $ID"
     done
     while [[ ! "$AGENTURL" =~ "import" ]]; do
-      AGENTURL=`curl -s "$RANCHERURL/v3/clusters/${CLUSTERID}/clusterregistrationtoken/$ID" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" | jq -r .manifestUrl`
+      AGENTURL=`curl $insecure -s "$RANCHERURL/v3/clusters/${CLUSTERID}/clusterregistrationtoken/$ID" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" | jq -r .manifestUrl`
       echo "AGENTURL: ${AGENTURL}"
     done
       kubectl -n $TARGETNAMESPACE wait pod/$CLUSTERNAME-vcluster-0 --for=condition=ready --timeout=300s
@@ -30,13 +31,13 @@ data:
   delete.sh: |
     echo "CLUSTERNAME: $CLUSTERNAME"
     while [ -z "$CLUSTERRESPONSE" ]; do
-      CLUSTERRESPONSE=`curl -s "$RANCHERURL/v3/clusters?name=$CLUSTERNAME" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN"`
+      CLUSTERRESPONSE=`curl $insecure -s "$RANCHERURL/v3/clusters?name=$CLUSTERNAME" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN"`
       echo "CLUSTERRESPONSE: $CLUSTERRESPONSE"
     done
     CLUSTERID=`echo $CLUSTERRESPONSE | jq -r '.data[].id'`
     echo "CLUSTERID: $CLUSTERID"
     while [[ ! "$REMOVE" =~ "removing" ]]; do
-      REMOVE=`curl -s -X DELETE "$RANCHERURL/v3/clusters/${CLUSTERID}" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" |jq -r .state`
+      REMOVE=`curl $insecure -s -X DELETE "$RANCHERURL/v3/clusters/${CLUSTERID}" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" |jq -r .state`
       echo "REMOVE: $REMOVE"
     done
     echo "CLUSTER REMOVED: $CLUSTERID"

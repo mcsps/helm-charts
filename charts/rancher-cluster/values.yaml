@@ -11,3 +11,7 @@ clustername: example
 
 # target namespace of the vcluster
 #targetnamespace:
+
+# insecure curl request
+insecure: false
+
