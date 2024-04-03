@@ -3,7 +3,7 @@ entries:
   cert-manager-crd:
   - apiVersion: v1
     appVersion: v1.8.2
-    created: "2024-04-03T09:22:17.086742799+02:00"
+    created: "2024-04-03T10:49:05.587876+02:00"
     description: Custom Resource Definitions (CRDs) for cert-manager.
     digest: e14e8ce516891fc5210217c9c48698a1c76dc5f6329d29c2cca4f222b43dfa0f
     home: https://github.com/jetstack/cert-manager
@@ -21,11 +21,11 @@ entries:
     sources:
     - https://github.com/jetstack/cert-manager
     urls:
-    - cert-manager-crd-v1.8.2.tgz
+    - https://mcsps.github.io/helm-charts/cert-manager-crd-v1.8.2.tgz
     version: v1.8.2
   - apiVersion: v1
     appVersion: v1.7.1
-    created: "2024-04-03T09:22:17.085402548+02:00"
+    created: "2024-04-03T10:49:05.586222+02:00"
     description: Custom Resource Definitions (CRDs) for cert-manager.
     digest: 1321b5e8978b4ffb56b1fb049ed878a73ea045cc4777d1baf74668c85ff5024c
     home: https://github.com/jetstack/cert-manager
@@ -43,11 +43,11 @@ entries:
     sources:
     - https://github.com/jetstack/cert-manager
     urls:
-    - cert-manager-crd-v1.7.1.tgz
+    - https://mcsps.github.io/helm-charts/cert-manager-crd-v1.7.1.tgz
     version: v1.7.1
   - apiVersion: v1
     appVersion: v1.5.3
-    created: "2024-04-03T09:22:17.083499916+02:00"
+    created: "2024-04-03T10:49:05.584808+02:00"
     description: Custom Resource Definitions (CRDs) for cert-manager.
     digest: 0d9445b97040e4d0a286240e5dc62a1231085502e4793dfae4a2619a00cf0eeb
     home: https://github.com/jetstack/cert-manager
@@ -65,11 +65,11 @@ entries:
     sources:
     - https://github.com/jetstack/cert-manager
     urls:
-    - cert-manager-crd-v1.5.3.tgz
+    - https://mcsps.github.io/helm-charts/cert-manager-crd-v1.5.3.tgz
     version: v1.5.3
   - apiVersion: v1
     appVersion: v1.2.0
-    created: "2024-04-03T09:22:17.077732802+02:00"
+    created: "2024-04-03T10:49:05.580539+02:00"
     description: Custom Resource Definitions (CRDs) for cert-manager.
     digest: 5f756787d644f024615c9b4f8c44c73960484906d1318c07f74c9161c12a8164
     home: https://github.com/jetstack/cert-manager
@@ -87,12 +87,12 @@ entries:
     sources:
     - https://github.com/jetstack/cert-manager
     urls:
-    - cert-manager-crd-v1.2.1.tgz
+    - https://mcsps.github.io/helm-charts/cert-manager-crd-v1.2.1.tgz
     version: v1.2.1
   cert-manager-issuer:
   - apiVersion: v1
     appVersion: v1.2.0
-    created: "2024-04-03T09:22:17.087091837+02:00"
+    created: "2024-04-03T10:49:05.588249+02:00"
     description: cert manager issuer
     digest: bf54456da844d1f06f38423ca47a55753dd34ef0a6b1c5e6c1fd16c3fec330b1
     home: https://github.com/jetstack/cert-manager
@@ -110,12 +110,12 @@ entries:
     sources:
     - https://github.com/jetstack/cert-manager
     urls:
-    - cert-manager-issuer-v1.2.2.tgz
+    - https://mcsps.github.io/helm-charts/cert-manager-issuer-v1.2.2.tgz
     version: v1.2.2
   cinder-csi-snapshot-crds:
   - apiVersion: v1
     appVersion: 4.0.0
-    created: "2024-04-03T09:22:17.087650498+02:00"
+    created: "2024-04-03T10:49:05.589158+02:00"
     description: CRDs for Cinder CSI Chart Snapshot Controller
     digest: ba662b5a7fd472e1e7f5ca3277de434296a85a5b023064c35a1986e7da9ca0b6
     home: https://github.com/kubernetes-csi/external-snapshotter/tree/master/client/config/crd
@@ -125,11 +125,11 @@ entries:
       name: eumel8
     name: cinder-csi-snapshot-crds
     urls:
-    - cinder-csi-snapshot-crds-4.0.0.tgz
+    - https://mcsps.github.io/helm-charts/cinder-csi-snapshot-crds-4.0.0.tgz
     version: 4.0.0
   - apiVersion: v1
     appVersion: latest
-    created: "2024-04-03T09:22:17.087392298+02:00"
+    created: "2024-04-03T10:49:05.588673+02:00"
     description: CRDs for Cinder CSI Chart Snapshot Controller
     digest: 3274cb298cda5f6edba73bb99511b6b4f5a645f2c1314e69c75d23396ef57aeb
     home: https://github.com/kubernetes-csi/external-snapshotter/tree/master/client/config/crd
@@ -139,49 +139,49 @@ entries:
       name: eumel8
     name: cinder-csi-snapshot-crds
     urls:
-    - cinder-csi-snapshot-crds-1.0.0.tgz
+    - https://mcsps.github.io/helm-charts/cinder-csi-snapshot-crds-1.0.0.tgz
     version: 1.0.0
   designate-certmanager-webhook:
   - apiVersion: v1
     appVersion: 0.2.18
-    created: "2024-04-03T09:22:17.088842076+02:00"
+    created: "2024-04-03T10:49:05.590951+02:00"
     description: ACME webhook Implementation for OpenStack Designate
     digest: cedbb7dee1bb04c6b67a76032bf16500980565848672bf95bf8318e80c2184b6
     name: designate-certmanager-webhook
     urls:
-    - designate-certmanager-webhook-0.3.0.tgz
+    - https://mcsps.github.io/helm-charts/designate-certmanager-webhook-0.3.0.tgz
     version: 0.3.0
   - apiVersion: v1
     appVersion: 0.2.12
-    created: "2024-04-03T09:22:17.088559958+02:00"
+    created: "2024-04-03T10:49:05.590527+02:00"
     description: ACME webhook Implementation for OpenStack Designate
     digest: c651b16dcf8c6d2a9591eb808c2df5ff7d64e7ca23cf7f193c4f2b4707b705c1
     name: designate-certmanager-webhook
     urls:
-    - designate-certmanager-webhook-0.2.15.tgz
+    - https://mcsps.github.io/helm-charts/designate-certmanager-webhook-0.2.15.tgz
     version: 0.2.15
   - apiVersion: v1
     appVersion: 0.2.12
-    created: "2024-04-03T09:22:17.088253255+02:00"
+    created: "2024-04-03T10:49:05.590096+02:00"
     description: ACME webhook Implementation for OpenStack Designate
     digest: 56775a561270856e24750e4fa0c10b40993b67cc557102f141bfb0a12176adee
     name: designate-certmanager-webhook
     urls:
-    - designate-certmanager-webhook-0.2.14.tgz
+    - https://mcsps.github.io/helm-charts/designate-certmanager-webhook-0.2.14.tgz
     version: 0.2.14
   - apiVersion: v1
     appVersion: 0.2.12
-    created: "2024-04-03T09:22:17.08797761+02:00"
+    created: "2024-04-03T10:49:05.589647+02:00"
     description: ACME webhook Implementation for OpenStack Designate
     digest: b7326c7f706b79d8484b18f18647ba5d66d621bff9623e5d419479c48cc4bb7b
     name: designate-certmanager-webhook
     urls:
-    - designate-certmanager-webhook-0.2.13.tgz
+    - https://mcsps.github.io/helm-charts/designate-certmanager-webhook-0.2.13.tgz
     version: 0.2.13
   openstack-service-loadbalancer:
   - apiVersion: v1
     appVersion: latest
-    created: "2024-04-03T09:22:17.088972494+02:00"
+    created: "2024-04-03T10:49:05.59123+02:00"
     description: Openstack Service Loadbalancer Helm Chart
     digest: 1c2c80d8943ae78dfd2fcba046994718bc226e8eb820677c4350e21bb6c442a9
     home: https://github.com/kubernetes/cloud-provider-openstack
@@ -192,7 +192,7 @@ entries:
       url: https://www.telekom.com
     name: openstack-service-loadbalancer
     urls:
-    - openstack-service-loadbalancer-1.0.0.tgz
+    - https://mcsps.github.io/helm-charts/openstack-service-loadbalancer-1.0.0.tgz
     version: 1.0.0
   prometheus-federator:
   - annotations:
@@ -207,7 +207,7 @@ entries:
       catalog.cattle.io/release-name: prometheus-federator
     apiVersion: v2
     appVersion: 0.2.0-rc4
-    created: "2024-04-03T09:22:17.090070118+02:00"
+    created: "2024-04-03T10:49:05.592342+02:00"
     dependencies:
     - condition: helmProjectOperator.enabled
       name: helmProjectOperator
@@ -217,25 +217,25 @@ entries:
     icon: https://raw.githubusercontent.com/rancher/prometheus-federator/main/assets/logos/prometheus-federator.svg
     name: prometheus-federator
     urls:
-    - prometheus-federator-0.2.0-rc4.tgz
+    - https://mcsps.github.io/helm-charts/prometheus-federator-0.2.0-rc4.tgz
     version: 0.2.0-rc4
   rancher-cluster:
   - apiVersion: v2
-    appVersion: 0.0.42
-    created: "2024-04-03T09:22:17.096375614+02:00"
+    appVersion: 0.1.0
+    created: "2024-04-03T10:49:05.609844+02:00"
     description: Job for create a cluster import in Rancher
-    digest: 40feed0c8f1bc5eeeaddea4193db518ad105e3dfcf4075b8b8eec217beccc923
+    digest: 8fbfc0d6357462b5dd2a0388fe037945fc0e91727c595f9465ea1ffdd11ab4a5
     maintainers:
     - email: f.kloeker@telekom.de
       name: eumel8
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.42.tgz
-    version: 0.0.42
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.1.0.tgz
+    version: 0.1.0
   - apiVersion: v2
     appVersion: 0.0.41
-    created: "2024-04-03T09:22:17.096086113+02:00"
+    created: "2024-04-03T10:49:05.603592+02:00"
     description: Job for create a cluster import in Rancher
     digest: 10f4069503ff5d45fd8d9461f4af643320e8f0dff418ef16fc131aa202fb2677
     maintainers:
@@ -244,11 +244,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.41.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.41.tgz
     version: 0.0.41
   - apiVersion: v2
     appVersion: 0.0.40
-    created: "2024-04-03T09:22:17.095944947+02:00"
+    created: "2024-04-03T10:49:05.603225+02:00"
     description: Job for create a cluster import in Rancher
     digest: 4673e180ec0898a3ef9e14a17bf86222fb9e96527777fd6d91dcf70c78cab76d
     maintainers:
@@ -257,11 +257,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.40.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.40.tgz
     version: 0.0.40
   - apiVersion: v2
     appVersion: 0.0.39
-    created: "2024-04-03T09:22:17.095684289+02:00"
+    created: "2024-04-03T10:49:05.602515+02:00"
     description: Job for create a cluster import in Rancher
     digest: bcbb90aa141ff216c45c09c440d2ac600a882d455d5837fba24abb4cb6187c4c
     maintainers:
@@ -270,11 +270,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.39.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.39.tgz
     version: 0.0.39
   - apiVersion: v2
     appVersion: 0.0.38
-    created: "2024-04-03T09:22:17.095524293+02:00"
+    created: "2024-04-03T10:49:05.602128+02:00"
     description: Job for create a cluster import in Rancher
     digest: f8e02e156e9b6cfc9f1db222c9df5f7eb5edc08f391dba3afd0e0717722a577d
     maintainers:
@@ -283,11 +283,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.38.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.38.tgz
     version: 0.0.38
   - apiVersion: v2
     appVersion: 0.0.37
-    created: "2024-04-03T09:22:17.095274964+02:00"
+    created: "2024-04-03T10:49:05.601756+02:00"
     description: Job for create a cluster import in Rancher
     digest: e8eeb2ae5620882fc629031c6f9c147ff6a561d8cc2d617d7c4deff194142d1b
     maintainers:
@@ -296,11 +296,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.37.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.37.tgz
     version: 0.0.37
   - apiVersion: v2
     appVersion: 0.0.36
-    created: "2024-04-03T09:22:17.095090704+02:00"
+    created: "2024-04-03T10:49:05.601379+02:00"
     description: Job for create a cluster import in Rancher
     digest: a62ce29c74735c556c24a4ff5a6e87074b0d196264c3830437121dab370341d7
     maintainers:
@@ -309,11 +309,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.36.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.36.tgz
     version: 0.0.36
   - apiVersion: v2
     appVersion: 0.0.35
-    created: "2024-04-03T09:22:17.094958672+02:00"
+    created: "2024-04-03T10:49:05.601098+02:00"
     description: Job for create a cluster import in Rancher
     digest: e2bb094f5017aefe81f5143cb9ffb20187d3a766ee6faa8e0bab706562a78a5a
     maintainers:
@@ -322,11 +322,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.35.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.35.tgz
     version: 0.0.35
   - apiVersion: v2
     appVersion: 0.0.34
-    created: "2024-04-03T09:22:17.094815896+02:00"
+    created: "2024-04-03T10:49:05.600822+02:00"
     description: Job for create a cluster import in Rancher
     digest: 998d54d93cd6c532aeb7411ef5282aa26337955aa88f88d383626aff7cd281ca
     maintainers:
@@ -335,11 +335,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.34.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.34.tgz
     version: 0.0.34
   - apiVersion: v2
     appVersion: 0.0.33
-    created: "2024-04-03T09:22:17.094698064+02:00"
+    created: "2024-04-03T10:49:05.600539+02:00"
     description: Job for create a cluster import in Rancher
     digest: 9ace050bf0c35cbecac36c183437b69c19881f2393ee2bfa88f7185a1618460e
     maintainers:
@@ -348,11 +348,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.33.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.33.tgz
     version: 0.0.33
   - apiVersion: v2
     appVersion: 0.0.32
-    created: "2024-04-03T09:22:17.09458116+02:00"
+    created: "2024-04-03T10:49:05.600243+02:00"
     description: Job for create a cluster import in Rancher
     digest: 41656e587a8f8908200703bcffa3b580e3ba0bed6e9e8a4825ef393130050756
     maintainers:
@@ -361,11 +361,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.32.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.32.tgz
     version: 0.0.32
   - apiVersion: v2
     appVersion: 0.0.31
-    created: "2024-04-03T09:22:17.094470323+02:00"
+    created: "2024-04-03T10:49:05.599968+02:00"
     description: Job for create a cluster import in Rancher
     digest: aa433b6b76d237d7aae4bf2a6b153fa44a3314f088d2293d8626ba5b3e82a11b
     maintainers:
@@ -374,11 +374,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.31.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.31.tgz
     version: 0.0.31
   - apiVersion: v2
     appVersion: 0.0.30
-    created: "2024-04-03T09:22:17.094361095+02:00"
+    created: "2024-04-03T10:49:05.599703+02:00"
     description: Job for create a cluster import in Rancher
     digest: 7d6342b2c9147f542f82b765f742f27b227dc20068a1bc028d6c7b91a78ae4ea
     maintainers:
@@ -387,11 +387,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.30.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.30.tgz
     version: 0.0.30
   - apiVersion: v2
     appVersion: 0.0.29
-    created: "2024-04-03T09:22:17.094092997+02:00"
+    created: "2024-04-03T10:49:05.599172+02:00"
     description: Job for create a cluster import in Rancher
     digest: 98274cfa8d5c509a7d2a22ed6455283cc74f08bcb9a72720b471d8cebe87ebb5
     maintainers:
@@ -400,11 +400,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.29.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.29.tgz
     version: 0.0.29
   - apiVersion: v2
     appVersion: 0.0.28
-    created: "2024-04-03T09:22:17.093961978+02:00"
+    created: "2024-04-03T10:49:05.598899+02:00"
     description: Job for create a cluster import in Rancher
     digest: e05d436919ef3b25465012844e21e23e8f0e6828d1e8f7151e040b80cea10e3b
     maintainers:
@@ -413,11 +413,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.28.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.28.tgz
     version: 0.0.28
   - apiVersion: v2
     appVersion: 0.0.27
-    created: "2024-04-03T09:22:17.093813176+02:00"
+    created: "2024-04-03T10:49:05.598642+02:00"
     description: Job for create a cluster import in Rancher
     digest: af106b0cbdcc8b41abfe28c6ba9f52247389f470f44d82807d2f62d6e49eae52
     maintainers:
@@ -426,11 +426,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.27.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.27.tgz
     version: 0.0.27
   - apiVersion: v2
     appVersion: 0.0.26
-    created: "2024-04-03T09:22:17.093692187+02:00"
+    created: "2024-04-03T10:49:05.598347+02:00"
     description: Job for create a cluster import in Rancher
     digest: 43ef6fd9792b8e1e9edc4610b4fe6d5123ce68252855f1c5e45348f643932ad2
     maintainers:
@@ -439,11 +439,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.26.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.26.tgz
     version: 0.0.26
   - apiVersion: v2
     appVersion: 0.0.25
-    created: "2024-04-03T09:22:17.09356354+02:00"
+    created: "2024-04-03T10:49:05.598061+02:00"
     description: Job for create a cluster import in Rancher
     digest: fee0eb7b177e5eef56e57541b6d383b191ee28e56b1bff567fd71e6a6740c0f9
     maintainers:
@@ -452,11 +452,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.25.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.25.tgz
     version: 0.0.25
   - apiVersion: v2
     appVersion: 0.0.24
-    created: "2024-04-03T09:22:17.093444221+02:00"
+    created: "2024-04-03T10:49:05.597757+02:00"
     description: Job for create a cluster import in Rancher
     digest: 76d9a0c93bd84daa9bbe11acd76ac4cc56d68839a99d884725969c53568f8c44
     maintainers:
@@ -465,11 +465,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.24.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.24.tgz
     version: 0.0.24
   - apiVersion: v2
     appVersion: 0.0.23
-    created: "2024-04-03T09:22:17.093324507+02:00"
+    created: "2024-04-03T10:49:05.597465+02:00"
     description: Job for create a cluster import in Rancher
     digest: acc99d5b17c5333205c33acbc44ba6b4a0f384c73ffc310e83f6e7fa20119807
     maintainers:
@@ -478,11 +478,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.23.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.23.tgz
     version: 0.0.23
   - apiVersion: v2
     appVersion: 0.0.22
-    created: "2024-04-03T09:22:17.093197474+02:00"
+    created: "2024-04-03T10:49:05.597193+02:00"
     description: Job for create a cluster import in Rancher
     digest: f91c6214443f7a16d07f59fe5849fe0f32153f9ca48a033403791bb03b45cf53
     maintainers:
@@ -491,11 +491,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.22.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.22.tgz
     version: 0.0.22
   - apiVersion: v2
     appVersion: 0.0.21
-    created: "2024-04-03T09:22:17.093038785+02:00"
+    created: "2024-04-03T10:49:05.596926+02:00"
     description: Job for create a cluster import in Rancher
     digest: e02a8498e085033c1b035bdcff0cc77d2576a137565b75706689762cb4fc7eb9
     maintainers:
@@ -504,11 +504,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.21.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.21.tgz
     version: 0.0.21
   - apiVersion: v2
     appVersion: 0.0.20
-    created: "2024-04-03T09:22:17.09286252+02:00"
+    created: "2024-04-03T10:49:05.596633+02:00"
     description: Job for create a cluster import in Rancher
     digest: fb2778c2c550af36494ac8312011a8257005f0246753eb84fc0cf7168d6105be
     maintainers:
@@ -517,11 +517,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.20.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.20.tgz
     version: 0.0.20
   - apiVersion: v2
     appVersion: 0.0.19
-    created: "2024-04-03T09:22:17.091769852+02:00"
+    created: "2024-04-03T10:49:05.596081+02:00"
     description: Job for create a cluster import in Rancher
     digest: 644a5febe06bdf17d500a89163f47bc050153ba453c92aad6f851273d5490827
     maintainers:
@@ -530,11 +530,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.19.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.19.tgz
     version: 0.0.19
   - apiVersion: v2
     appVersion: 0.0.18
-    created: "2024-04-03T09:22:17.091520432+02:00"
+    created: "2024-04-03T10:49:05.595791+02:00"
     description: Job for create a cluster import in Rancher
     digest: 47b68f05ed77022628b1c9f47f13afd98b83bb66856ab1db831b3e2f6b23227e
     maintainers:
@@ -543,11 +543,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.18.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.18.tgz
     version: 0.0.18
   - apiVersion: v2
     appVersion: 0.0.17
-    created: "2024-04-03T09:22:17.091387567+02:00"
+    created: "2024-04-03T10:49:05.595526+02:00"
     description: Job for create a cluster import in Rancher
     digest: dee292056a834de89021d5367a3165468d1e76ba053c9e549be5414c5f535777
     maintainers:
@@ -556,11 +556,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.17.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.17.tgz
     version: 0.0.17
   - apiVersion: v2
     appVersion: 0.0.16
-    created: "2024-04-03T09:22:17.091256051+02:00"
+    created: "2024-04-03T10:49:05.595106+02:00"
     description: Job for create a cluster import in Rancher
     digest: 4abe8d73fc8dd33bd8f1892b7654a306fb6d96be8ae5ce95f09e9de06d0d159b
     maintainers:
@@ -569,11 +569,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.16.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.16.tgz
     version: 0.0.16
   - apiVersion: v2
     appVersion: 0.0.15
-    created: "2024-04-03T09:22:17.091089311+02:00"
+    created: "2024-04-03T10:49:05.594589+02:00"
     description: Job for create a cluster import in Rancher
     digest: 99abe3abe4c45b0b34781c5af0fe718f8b9a11ee77decde0f1464608821ef09d
     maintainers:
@@ -582,11 +582,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.15.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.15.tgz
     version: 0.0.15
   - apiVersion: v2
     appVersion: 0.0.14
-    created: "2024-04-03T09:22:17.090949529+02:00"
+    created: "2024-04-03T10:49:05.594211+02:00"
     description: Job for create a cluster import in Rancher
     digest: 76e5d34b2bd4e3402e805aa5b0354859bc952b7d3e9d143e5b45d0224493ef88
     maintainers:
@@ -595,11 +595,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.14.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.14.tgz
     version: 0.0.14
   - apiVersion: v2
     appVersion: 0.0.13
-    created: "2024-04-03T09:22:17.090797693+02:00"
+    created: "2024-04-03T10:49:05.593837+02:00"
     description: Job for create a cluster import in Rancher
     digest: 75478e50479ed95aa154f6aaf28a7b987b2033b9c1ff99658bbf1c156866b4f7
     maintainers:
@@ -608,11 +608,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.13.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.13.tgz
     version: 0.0.13
   - apiVersion: v2
     appVersion: 0.0.12
-    created: "2024-04-03T09:22:17.090660169+02:00"
+    created: "2024-04-03T10:49:05.59348+02:00"
     description: Job for create a cluster import in Rancher
     digest: 99607f1cc31294c295da877961ba4e093ada14057efc0735c5dcdb15da2feb5b
     maintainers:
@@ -621,11 +621,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.12.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.12.tgz
     version: 0.0.12
   - apiVersion: v2
     appVersion: 0.0.11
-    created: "2024-04-03T09:22:17.090520126+02:00"
+    created: "2024-04-03T10:49:05.593208+02:00"
     description: Job for create a cluster import in Rancher
     digest: 97fbb1df4c83975b0ae81fe71d1294683b89e0bb052a8522afcc1bb7c0e625cb
     maintainers:
@@ -634,11 +634,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.11.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.11.tgz
     version: 0.0.11
   - apiVersion: v2
     appVersion: 0.0.10
-    created: "2024-04-03T09:22:17.09036108+02:00"
+    created: "2024-04-03T10:49:05.592913+02:00"
     description: Job for create a cluster import in Rancher
     digest: 25fe089407046e600c80441541f20925e82688d40a469022c94c802aa5e8aae5
     maintainers:
@@ -647,11 +647,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.10.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.10.tgz
     version: 0.0.10
   - apiVersion: v2
     appVersion: 0.0.9
-    created: "2024-04-03T09:22:17.097397228+02:00"
+    created: "2024-04-03T10:49:05.605533+02:00"
     description: Job for create a cluster import in Rancher
     digest: 0aab29c0834d220b77024d8bc08f51492f4c6d182dd970851a2e408771701bd3
     maintainers:
@@ -660,11 +660,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.9.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.9.tgz
     version: 0.0.9
   - apiVersion: v2
     appVersion: 0.0.8
-    created: "2024-04-03T09:22:17.097238151+02:00"
+    created: "2024-04-03T10:49:05.60529+02:00"
     description: Job for create a cluster import in Rancher
     digest: 639faea0398ac2170938fa70a4d5358bba0ecfadd01fb107b02736aff779caf5
     maintainers:
@@ -673,11 +673,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.8.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.8.tgz
     version: 0.0.8
   - apiVersion: v2
     appVersion: 0.0.7
-    created: "2024-04-03T09:22:17.096973137+02:00"
+    created: "2024-04-03T10:49:05.604999+02:00"
     description: Job for create a cluster import in Rancher
     digest: df3770bbb7dabe50cb3a803d865c1340e7da918b565d8a9c7aad1c336d45dfa7
     maintainers:
@@ -686,11 +686,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.7.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.7.tgz
     version: 0.0.7
   - apiVersion: v2
     appVersion: 0.0.6
-    created: "2024-04-03T09:22:17.096710645+02:00"
+    created: "2024-04-03T10:49:05.604716+02:00"
     description: Job for create a cluster import in Rancher
     digest: c46fd54c2024722c013d16ddebc81351cff4bbdfde4217666b6a6866c19b8556
     maintainers:
@@ -699,11 +699,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.6.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.6.tgz
     version: 0.0.6
   - apiVersion: v2
     appVersion: 0.0.5
-    created: "2024-04-03T09:22:17.096562717+02:00"
+    created: "2024-04-03T10:49:05.604434+02:00"
     description: Job for create a cluster import in Rancher
     digest: dec691de440f211bc36d32bd08ae0bfcfc465d78df2ca39973d6fd0c7207fa58
     maintainers:
@@ -712,11 +712,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.5.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.5.tgz
     version: 0.0.5
   - apiVersion: v2
     appVersion: 0.0.4
-    created: "2024-04-03T09:22:17.095804096+02:00"
+    created: "2024-04-03T10:49:05.602866+02:00"
     description: Job for create a cluster import in Rancher
     digest: e51e7b7c6c37b990e6cf6b6629289383f24811d199453038390c2d135143827b
     maintainers:
@@ -725,11 +725,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.4.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.4.tgz
     version: 0.0.4
   - apiVersion: v2
     appVersion: 0.0.3
-    created: "2024-04-03T09:22:17.094231273+02:00"
+    created: "2024-04-03T10:49:05.599435+02:00"
     description: Job for create a cluster import in Rancher
     digest: fe4cd9a9c5c6d343832b43f5630abbbdfc66c612092e8811c5c26b885940a8f0
     maintainers:
@@ -738,11 +738,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.3.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.3.tgz
     version: 0.0.3
   - apiVersion: v2
     appVersion: 0.0.2
-    created: "2024-04-03T09:22:17.092660489+02:00"
+    created: "2024-04-03T10:49:05.596347+02:00"
     description: Job for create a cluster import in Rancher
     digest: 9974082e2164f8b5ea7027c92d7c7167f9aeec171a365ee17890442d04e8a3ce
     maintainers:
@@ -751,11 +751,11 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.2.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.2.tgz
     version: 0.0.2
   - apiVersion: v2
     appVersion: 0.0.1
-    created: "2024-04-03T09:22:17.090217143+02:00"
+    created: "2024-04-03T10:49:05.592626+02:00"
     description: Job for create a cluster import in Rancher
     digest: f0a4d2a6770f27e48b8a87861bbf84dec85499d1c4f0bb60c5b6567afd7ba856
     maintainers:
@@ -764,7 +764,7 @@ entries:
       url: https://www.telekom.com
     name: rancher-cluster
     urls:
-    - rancher-cluster-0.0.1.tgz
+    - https://mcsps.github.io/helm-charts/rancher-cluster-0.0.1.tgz
     version: 0.0.1
   rancher-project-monitoring:
   - annotations:
@@ -777,7 +777,7 @@ entries:
       catalog.cattle.io/release-name: rancher-project-monitoring
     apiVersion: v2
     appVersion: 0.59.1
-    created: "2024-04-03T09:22:17.106256669+02:00"
+    created: "2024-04-03T10:49:05.615513+02:00"
     dependencies:
     - condition: grafana.enabled
       name: grafana
@@ -802,12 +802,12 @@ entries:
     name: rancher-project-monitoring
     type: application
     urls:
-    - rancher-project-monitoring-0.2.0-rc4.tgz
+    - https://mcsps.github.io/helm-charts/rancher-project-monitoring-0.2.0-rc4.tgz
     version: 0.2.0-rc4
   s3-register:
   - apiVersion: v2
     appVersion: 0.0.1
-    created: "2024-04-03T09:22:17.106488184+02:00"
+    created: "2024-04-03T10:49:05.615924+02:00"
     description: Job for create a bucket and a user on S3 backend
     digest: 987536d2b448075ec5969c97c68805d55360c2518ed65f12fc386bf47872dd8d
     maintainers:
@@ -816,6 +816,6 @@ entries:
       url: https://www.telekom.com
     name: s3-register
     urls:
-    - s3-register-0.0.1.tgz
+    - https://mcsps.github.io/helm-charts/s3-register-0.0.1.tgz
     version: 0.0.1
-generated: "2024-04-03T09:22:17.073490096+02:00"
+generated: "2024-04-03T10:49:05.574821+02:00"
