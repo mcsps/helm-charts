@@ -4,6 +4,9 @@ metadata:
   labels:
     job-name: {{ .Release.Name }}-create
   name: {{ .Release.Name }}-create
+  annotations:
+    "helm.sh/hook": post-install
+    "helm.sh/hook-delete-policy": before-hook-creation,hook-succeeded
 spec:
   backoffLimit: 1
   completions: 1
