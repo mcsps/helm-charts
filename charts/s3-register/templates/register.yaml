@@ -64,6 +64,8 @@ spec:
         image:  {{ .Values.image }}
         imagePullPolicy: Always
         name: register
+        resources:
+          {{- .Values.resources | toYaml | nindent 10 }}
         env:
         - name: S3URL
           value: {{ .Values.s3.url }}
@@ -124,6 +126,8 @@ spec:
         image:  {{ .Values.image }}
         imagePullPolicy: Always
         name: register
+        resources:
+          {{- .Values.resources | toYaml | nindent 10 }}
         env:
         - name: S3URL
           value: {{ .Values.s3.url }}
