@@ -1,43 +1,151 @@
-{{ $insecure := ternary "--insecure" "" .Values.insecure }}
+{{- $insecure := ternary "--insecure" "" .Values.insecure }}
+{{- $http_proxy := ternary (printf "-x %s" .Values.httpProxy.address) "" .Values.httpProxy.enabled }}
 apiVersion: v1
 data:
   create.sh: |
-    echo "CLUSTERNAME: $CLUSTERNAME"
-    curl $insecure "$RANCHERURL/v3/clusters" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" | jq 
-    while [ -z "$CLUSTERRESPONSE" ]; do
-      CLUSTERRESPONSE=`curl $insecure -s "$RANCHERURL/v3/cluster" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" --data-binary '{"type":"cluster","name":"'$CLUSTERNAME'","import":true}'`
-      echo "CLUSTERRESPONSE: $CLUSTERRESPONSE"
+    echo "Creating cluster $CLUSTERNAME"
+    curl {{ $insecure }} {{ $http_proxy }} \
+        --retry 5 --retry-delay 5 \
+        -sfL \
+        --request POST \
+        -o /dev/null \
+        --url "$RANCHERURL/v1/provisioning.cattle.io.clusters" \
+        -u "$APITOKEN" \
+        --header 'Content-Type: application/json' \
+        --data '{
+            "type":"provisioning.cattle.io.cluster",
+            "metadata":{
+                "namespace":"fleet-default",
+                "name":"'"$CLUSTERNAME"'"
+            },
+            "spec":{
+                {{ if .Values.httpProxy.enabled }}
+                "agentEnvVars":[
+                    {
+                        "name":"HTTP_PROXY",
+                        "value":"{{ .Values.httpProxy.address }}"
+                    },
+                    {
+                        "name":"HTTPS_PROXY",
+                        "value":"{{ .Values.httpProxy.address }}"
+                    },
+                    {
+                        "name":"NO_PROXY",
+                        "value":"127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.svc,.cluster.local"
+                    }
+                ],
+                {{ end }}
+                "clusterAgentDeploymentCustomization":{
+                    "overrideResourceRequirements":{
+                        "limits":{
+                            "cpu":"2000m",
+                            "memory":"2Gi"
+                        },
+                        "requests":{
+                            "cpu":"200m",
+                            "memory":"256Mi"
+                        }
+                    }
+                },
+                "fleetAgentDeploymentCustomization":{
+                    "overrideResourceRequirements":{
+                        "limits":{
+                            "cpu":"2000m",
+                            "memory":"2Gi"
+                        },
+                        "requests":{
+                            "cpu":"100m",
+                            "memory":"128Mi"
+                        }
+                    }
+                }
+            }
+        }' || { echo "Could not create cluster $CLUSTERNAME"; exit 1; }
+    echo "Created cluster $CLUSTERNAME"
+
+    echo "Getting cluster ID for $CLUSTERNAME"
+    while :
+    do
+        CLUSTER_ID="$(curl {{ $insecure }} {{ $http_proxy }} \
+            --retry 5 --retry-delay 5 \
+            -sfL \
+            --request GET \
+            --url "$RANCHERURL/v3/clusters?name=$CLUSTERNAME" \
+            -u "$APITOKEN" | jq -r '.data[0].id')"
+        if [[ "$CLUSTER_ID" != 'null' ]]; then
+            break
+        elif [[ "$i" == '20' ]]; then
+            echo "Could not get cluster ID for $CLUSTERNAME"
+            exit 1
+        fi
+        sleep 5
     done
-    CLUSTERID=`echo $CLUSTERRESPONSE | jq -r .id`
-    echo "CLUSTERID: $CLUSTERID"
-    while [[ ! "$ID" =~ ":" ]]; do
-      ID=`curl $insecure -s "$RANCHERURL/v3/clusters/${CLUSTERID}/clusterregistrationtoken" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" --data-binary '{"type":"clusterRegistrationToken","clusterId":"'$CLUSTERID'"}'  |jq -r .id`
-      echo "ID: $ID"
+    echo "Got cluster ID for $CLUSTERNAME"
+
+    echo "Getting cluster registration token for $CLUSTERNAME ($CLUSTER_ID)"
+    while :
+    do
+        AGENTURL="$(curl {{ $insecure }} {{ $http_proxy }} \
+            --retry 5 --retry-delay 5 \
+            -sfL \
+            --request GET \
+            --url "$RANCHERURL/v3/clusterregistrationtokens?clusterId=$CLUSTER_ID" \
+            -u "$APITOKEN" | jq -r '.data[0].manifestUrl')"
+        if [[ "$AGENTURL" != 'null' ]]; then
+            break
+        elif [[ "$i" == '20' ]]; then
+            echo "Could not get cluster registration token for $CLUSTERNAME ($CLUSTER_ID)"
+            exit 1
+        fi
+        sleep 5
     done
-    while [[ ! "$AGENTURL" =~ "import" ]]; do
-      AGENTURL=`curl $insecure -s "$RANCHERURL/v3/clusters/${CLUSTERID}/clusterregistrationtoken/$ID" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" | jq -r .manifestUrl`
-      echo "AGENTURL: ${AGENTURL}"
+    echo "Got cluster registration token for $CLUSTERNAME ($CLUSTER_ID)"
+
+    echo "Waiting for Vcluster pod to become ready"
+    # waiting for Vcluster pod multiple times since the pod might not have been created by the statefulset yet
+    while :
+    do
+        kubectl -n $TARGETNAMESPACE wait pod/$CLUSTERNAME-vcluster-0 --for=condition=ready --timeout=10s && break || [[ "$i" != '20' ]] || { echo "Failed waiting for VCLUSTER pod to get ready"; exit 1; }
+        sleep 5
     done
-      kubectl -n $TARGETNAMESPACE wait pod/$CLUSTERNAME-vcluster-0 --for=condition=ready --timeout=300s
-      echo "apply to cluster..."
-      #vcluster -n $TARGETNAMESPACE connect $CLUSTERNAME-vcluster -- kubectl create ns cattle-system
-      #vcluster -n $TARGETNAMESPACE connect $CLUSTERNAME-vcluster -- kubectl apply -f "${AGENTURL}"
-      kubectl -n $TARGETNAMESPACE cp /usr/local/bin/kubectl $CLUSTERNAME-vcluster-0:/tmp/kubectl
-      kubectl -n $TARGETNAMESPACE exec $CLUSTERNAME-vcluster-0 -c syncer -- /tmp/kubectl --kubeconfig=/data/k3s-config/kube-config.yaml create ns cattle-system
-      kubectl -n $TARGETNAMESPACE exec $CLUSTERNAME-vcluster-0 -c syncer -- /tmp/kubectl --kubeconfig=/data/k3s-config/kube-config.yaml apply -f "${AGENTURL}"
-      #kubectl -n $TARGETNAMESPACE exec $CLUSTERNAME-vcluster-0 -c syncer -- kubectl create ns cattle-system
-      #kubectl -n $TARGETNAMESPACE exec $CLUSTERNAME-vcluster-0 -c syncer -- kubectl apply -f "${AGENTURL}"
-      sleep 4
+    echo "Vcluster pod ready"
+
+    echo "Fetching Rancher manifest from upstream"
+    RANCHER_MANIFEST="$(curl {{ $insecure }} {{ $http_proxy }} \
+            -sfL \
+            --request GET \
+            --url "$AGENTURL")" || { echo "Could not fetch Rancher manifest from upstream"; exit 1; }
+    echo "Fetched Rancher manifest from upstream"
+
+    echo "Copying kubectl CLI to Vcluster pod"
+    kubectl -n $TARGETNAMESPACE cp /usr/local/bin/kubectl $CLUSTERNAME-vcluster-0:/tmp/kubectl -c syncer || { echo "Could not copy kubectl to vcluster pod"; exit 1; }
+    echo "Copied kubectl CLI to Vcluster pod"
+
+    echo "Creating cattle-system namespace in Vcluster"
+    kubectl -n $TARGETNAMESPACE exec $CLUSTERNAME-vcluster-0 -c syncer -- /tmp/kubectl --kubeconfig=/data/k3s-config/kube-config.yaml create ns cattle-system || { echo "Could not create cattle-system NS in Vcluster"; exit 1; }
+    echo "Created cattle-system namespace in Vcluster"
+
+    echo "Applying Rancher manifest to Vcluster"
+    echo "$RANCHER_MANIFEST" | kubectl -n $TARGETNAMESPACE exec --stdin $CLUSTERNAME-vcluster-0 -c syncer -- /tmp/kubectl --kubeconfig=/data/k3s-config/kube-config.yaml apply -f - || { echo "Could not apply Rancher manifest to Vcluster"; exit 1; }
+    echo "Applied Rancher manifest to Vcluster"
+
+    echo "Removing kubectl CLI from Vcluster pod"
+    kubectl -n $TARGETNAMESPACE exec $CLUSTERNAME-vcluster-0 -c syncer -- rm /tmp/kubectl || { echo "Could not delete kubectl from vcluster pod"; exit 1; }
+    echo "Removed kubectl CLI from Vcluster pod"
+
+    echo "Successfully set up Vcluster as Rancher cluster"
   delete.sh: |
     echo "CLUSTERNAME: $CLUSTERNAME"
     while [ -z "$CLUSTERRESPONSE" ]; do
-      CLUSTERRESPONSE=`curl $insecure -s "$RANCHERURL/v3/clusters?name=$CLUSTERNAME" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN"`
+      sleep 5
+      CLUSTERRESPONSE=`curl {{ $insecure }} -s "$RANCHERURL/v3/clusters?name=$CLUSTERNAME" -H 'content-type: application/json' -u "$APITOKEN"`
       echo "CLUSTERRESPONSE: $CLUSTERRESPONSE"
     done
     CLUSTERID=`echo $CLUSTERRESPONSE | jq -r '.data[].id'`
     echo "CLUSTERID: $CLUSTERID"
     while [[ ! "$REMOVE" =~ "removing" ]]; do
-      REMOVE=`curl $insecure -s -X DELETE "$RANCHERURL/v3/clusters/${CLUSTERID}" -H 'content-type: application/json' -H "Authorization: Bearer $APITOKEN" |jq -r .state`
+      sleep 5
+      REMOVE=`curl {{ $insecure }} -s -X DELETE "$RANCHERURL/v3/clusters/${CLUSTERID}" -H 'content-type: application/json' -u "$APITOKEN" |jq -r .state`
       echo "REMOVE: $REMOVE"
     done
     echo "CLUSTER REMOVED: $CLUSTERID"
