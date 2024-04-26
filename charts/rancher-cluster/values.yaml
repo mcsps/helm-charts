@@ -18,3 +18,8 @@ insecure: false
 httpProxy:
   enabled: false
   address: http://127.0.0.1:3128
+
+# if enabled, a cluster owner will be registered
+createOwner:
+  enabled: false
+  userPrincipalName: keycloak://user@email.de

@@ -134,6 +134,26 @@ data:
     echo "Removed kubectl CLI from Vcluster pod"
 
     echo "Successfully set up Vcluster as Rancher cluster"
+
+    {{- if .Values.createOwner.enabled }}
+
+    echo "Adding an initial vcluster owner ({{ .Values.createOwner.userPrincipalName }})"
+    curl {{ $insecure }} {{ $http_proxy }} \
+        --retry 5 --retry-delay 5 \
+        -sfL \
+        --request POST \
+        -o /dev/null \
+        --url "$RANCHERURL/v3/clusterroletemplatebindings" \
+        -u "$APITOKEN" \
+        --header 'Content-Type: application/json' \
+        --data '{
+            "type":"clusterRoleTemplateBinding",
+            "clusterId":"'$CLUSTER_ID'",
+            "roleTemplateId":"cluster-owner",
+            "userPrincipalId":"{{ .Values.createOwner.userPrincipalName }}"
+        }' || { echo "Could not create vcluster owner"; exit 1; }
+    echo "Added an initial vcluster owner ({{ .Values.createOwner.userPrincipalName }})"
+    {{- end }}
   delete.sh: |
     echo "Removing cluster $CLUSTERNAME"
 
