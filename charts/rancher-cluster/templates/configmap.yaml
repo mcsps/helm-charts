@@ -78,6 +78,7 @@ data:
             echo "Could not get cluster ID for $CLUSTERNAME"
             exit 1
         fi
+        ((i++))
         sleep 5
     done
     echo "Got cluster ID for $CLUSTERNAME"
@@ -97,6 +98,7 @@ data:
             echo "Could not get cluster registration token for $CLUSTERNAME ($CLUSTER_ID)"
             exit 1
         fi
+        ((i++))
         sleep 5
     done
     echo "Got cluster registration token for $CLUSTERNAME ($CLUSTER_ID)"
@@ -137,6 +139,26 @@ data:
 
     {{- if .Values.createOwner.enabled }}
 
+    echo 'Waiting for Rancher cluster registration to finish'
+    while :
+    do
+        READY="$(curl {{ $insecure }} {{ $http_proxy }} \
+            --retry 5 --retry-delay 5 \
+            -sfL \
+            --request GET \
+            --url "$RANCHERURL/v3/clusters/$CLUSTER_ID" \
+            -u "$APITOKEN" | jq -r '.conditions | map(select(.type == "Ready") | .status)[0]')"
+        if [[ "$READY" == 'True' ]]; then
+            break
+        elif [[ "$i" == '20' ]]; then
+            echo "Failed waiting for Rancher cluster registration of $CLUSTERNAME ($CLUSTER_ID) to become ready"
+            exit 1
+        fi
+        ((i++))
+        sleep 5
+    done
+    echo 'Successfully waited for Rancher cluster registration to finish'
+
     echo "Adding an initial vcluster owner ({{ .Values.createOwner.userPrincipalName }})"
     curl {{ $insecure }} {{ $http_proxy }} \
         --retry 5 --retry-delay 5 \
@@ -172,6 +194,7 @@ data:
             echo "Could not get cluster ID for $CLUSTERNAME"
             exit 1
         fi
+        ((i++))
         sleep 5
     done
     echo "Got cluster ID ($CLUSTER_ID) for $CLUSTERNAME"
@@ -191,6 +214,7 @@ data:
             echo "Could not remove cluster with ID $CLUSTER_ID"
             exit 1
         fi
+        ((i++))
         sleep 5
     done
     echo "Removed cluster with ID $CLUSTER_ID (Result: $RESULT)"
