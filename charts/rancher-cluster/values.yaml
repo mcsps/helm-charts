@@ -9,6 +9,9 @@ rancher:
 # Cluster name to appear in Rancher
 clustername: example
 
+# the release name of the vcluster helm chart
+vclusterReleaseName: vc-12345-12345-12345
+
 # target namespace of the vcluster
 #targetnamespace:
 

@@ -35,6 +35,8 @@ spec:
           value: {{ .Values.rancher.url }}
         - name: CLUSTERNAME
           value: {{ .Values.clustername }}
+        - name: VCLUSTER_RELEASE_NAME
+          value: {{ .Values.vclusterReleaseName }}
         {{- if not .Values.targetnamespace }}
         - name: TARGETNAMESPACE
           value: {{ .Release.Namespace }}

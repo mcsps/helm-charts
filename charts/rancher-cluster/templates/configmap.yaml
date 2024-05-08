@@ -107,7 +107,7 @@ data:
     # waiting for Vcluster pod multiple times since the pod might not have been created by the statefulset yet
     while :
     do
-        kubectl -n $TARGETNAMESPACE wait pod/$CLUSTERNAME-vcluster-0 --for=condition=ready --timeout=10s && break || [[ "$i" != '20' ]] || { echo "Failed waiting for VCLUSTER pod to get ready"; exit 1; }
+        kubectl -n $TARGETNAMESPACE wait pod/$VCLUSTER_RELEASE_NAME-0 --for=condition=ready --timeout=10s && break || [[ "$i" != '20' ]] || { echo "Failed waiting for VCLUSTER pod to get ready"; exit 1; }
         sleep 5
     done
     echo "Vcluster pod ready"
@@ -120,19 +120,19 @@ data:
     echo "Fetched Rancher manifest from upstream"
 
     echo "Copying kubectl CLI to Vcluster pod"
-    kubectl -n $TARGETNAMESPACE cp /usr/local/bin/kubectl $CLUSTERNAME-vcluster-0:/tmp/kubectl -c syncer || { echo "Could not copy kubectl to vcluster pod"; exit 1; }
+    kubectl -n $TARGETNAMESPACE cp /usr/local/bin/kubectl $VCLUSTER_RELEASE_NAME-0:/tmp/kubectl -c syncer || { echo "Could not copy kubectl to vcluster pod"; exit 1; }
     echo "Copied kubectl CLI to Vcluster pod"
 
     echo "Creating cattle-system namespace in Vcluster"
-    kubectl -n $TARGETNAMESPACE exec $CLUSTERNAME-vcluster-0 -c syncer -- /tmp/kubectl --kubeconfig=/data/k3s-config/kube-config.yaml create ns cattle-system || { echo "Could not create cattle-system NS in Vcluster"; exit 1; }
+    kubectl -n $TARGETNAMESPACE exec $VCLUSTER_RELEASE_NAME-0 -c syncer -- /tmp/kubectl --kubeconfig=/data/k3s-config/kube-config.yaml create ns cattle-system || { echo "Could not create cattle-system NS in Vcluster"; exit 1; }
     echo "Created cattle-system namespace in Vcluster"
 
     echo "Applying Rancher manifest to Vcluster"
-    echo "$RANCHER_MANIFEST" | kubectl -n $TARGETNAMESPACE exec --stdin $CLUSTERNAME-vcluster-0 -c syncer -- /tmp/kubectl --kubeconfig=/data/k3s-config/kube-config.yaml apply -f - || { echo "Could not apply Rancher manifest to Vcluster"; exit 1; }
+    echo "$RANCHER_MANIFEST" | kubectl -n $TARGETNAMESPACE exec --stdin $VCLUSTER_RELEASE_NAME-0 -c syncer -- /tmp/kubectl --kubeconfig=/data/k3s-config/kube-config.yaml apply -f - || { echo "Could not apply Rancher manifest to Vcluster"; exit 1; }
     echo "Applied Rancher manifest to Vcluster"
 
     echo "Removing kubectl CLI from Vcluster pod"
-    kubectl -n $TARGETNAMESPACE exec $CLUSTERNAME-vcluster-0 -c syncer -- rm /tmp/kubectl || { echo "Could not delete kubectl from vcluster pod"; exit 1; }
+    kubectl -n $TARGETNAMESPACE exec $VCLUSTER_RELEASE_NAME-0 -c syncer -- rm /tmp/kubectl || { echo "Could not delete kubectl from vcluster pod"; exit 1; }
     echo "Removed kubectl CLI from Vcluster pod"
 
     echo "Successfully set up Vcluster as Rancher cluster"
