@@ -12,4 +12,5 @@ RUN curl -LO https://github.com/grafana/mimir/releases/download/mimir-2.14.2/mim
 
 RUN adduser -u 1000 -D appuser
 
+USER appuser
 CMD tail -f /dev/null
